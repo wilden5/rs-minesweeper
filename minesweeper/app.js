@@ -34,15 +34,40 @@ const createBasicLayout = () => {
 const createGameBoard = (setRows, setColumns) => {
     const GAME_BOARD = document.querySelector('.game-board');
     for (let row = 0; row < setRows; row++) {
+        let boardRow = [];
         for (let column = 0; column < setColumns; column++) {
             let bar = document.createElement('div');
-            bar.classList.add(`${row.toString()}-${column.toString()}`);
+            bar.classList.add(`${row.toString()}-${column.toString()}`, 'bar');
             GAME_BOARD.appendChild(bar);
+            boardRow.push(bar);
         }
+        gameBoard.push(boardRow);
     }
+    console.log(gameBoard);
+}
+
+const handleRedFlag = () => {
+    const RED_FLAG = '🚩';
+    const BOARD_BARS = document.querySelectorAll('.bar');
+
+    BOARD_BARS.forEach((bar) => {
+        bar.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+
+            if (bar.innerHTML === '') {
+                bar.innerHTML = RED_FLAG;
+                bar.classList.toggle('red-flag');
+            } else {
+                bar.innerHTML = '';
+                bar.classList.toggle('red-flag');
+            }
+        })
+    })
+    // todo: Implement count flags logic; validation for max flags
 }
 
 (function initGame() {
     createBasicLayout();
     createGameBoard(GAME_DIFFICULTIES.easy.rows,GAME_DIFFICULTIES.easy.columns);
+    handleRedFlag();
 }());
