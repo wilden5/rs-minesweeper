@@ -8,6 +8,7 @@ const GAME_DIFFICULTIES = {
         rows: 10,
         columns: 10,
         bombs: 10,
+        flags: 10,
     }
 }
 
@@ -19,16 +20,28 @@ const createBasicLayout = () => {
     }
     const appendGameInformation = () => {
         const GAME_INFORMATION = document.createElement('div');
+        GAME_INFORMATION.classList.add('game-information')
+
+        const NUMBER_OF_FLAGS_TEXT = document.createElement('div');
+        NUMBER_OF_FLAGS_TEXT.classList.add('red-flags-information');
+        NUMBER_OF_FLAGS_TEXT.innerText = 'Number of 🚩 remained:';
+
+        const NUMBER_OF_FLAGS = document.createElement('span');
+        NUMBER_OF_FLAGS.classList.add('red-flags-number');
+        NUMBER_OF_FLAGS.innerText = GAME_DIFFICULTIES.easy.flags;
 
         const GAME_BOARD_THEME_BUTTON = document.createElement('button');
         const TOTAL_BOMBS_ON_GAME_BOARD = document.createElement('span');
         const NUMBER_OF_CLICKS = document.createElement('span');
         const GAME_DURATION = document.createElement('span');
         const GAME_RESTART_BUTTON = document.createElement('button');
-        const NUMBER_OF_FLAGS_REMAINED = document.createElement('span');
+
+        GAME_INFORMATION.appendChild(NUMBER_OF_FLAGS_TEXT);
+        NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
+        document.body.appendChild(GAME_INFORMATION);
     }
-    appendGameBoardElement();
     appendGameInformation();
+    appendGameBoardElement();
 }
 
 const createGameBoard = (setRows, setColumns) => {
@@ -49,21 +62,24 @@ const createGameBoard = (setRows, setColumns) => {
 const handleRedFlag = () => {
     const RED_FLAG = '🚩';
     const BOARD_BARS = document.querySelectorAll('.bar');
+    const RED_FLAGS_NUMBER = document.querySelector('.red-flags-number');
 
     BOARD_BARS.forEach((bar) => {
-        bar.addEventListener('contextmenu', (event) => {
-            event.preventDefault();
-
-            if (bar.innerHTML === '') {
-                bar.innerHTML = RED_FLAG;
-                bar.classList.toggle('red-flag');
-            } else {
-                bar.innerHTML = '';
-                bar.classList.toggle('red-flag');
-            }
-        })
-    })
-    // todo: Implement count flags logic; validation for max flags
+            bar.addEventListener('contextmenu', (event) => {
+                event.preventDefault();
+                if (bar.innerHTML === '') {
+                    if (RED_FLAGS_NUMBER.innerText > 0) {
+                        RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) - 1;
+                        bar.innerHTML = RED_FLAG;
+                        bar.classList.toggle('red-flag');
+                    }
+                } else {
+                    RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) + 1;
+                    bar.innerHTML = '';
+                    bar.classList.toggle('red-flag');
+                }
+            });
+    });
 }
 
 (function initGame() {
