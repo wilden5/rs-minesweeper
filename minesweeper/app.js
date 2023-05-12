@@ -129,10 +129,12 @@ const handleBarClick = () => {
             }
             console.log(bar.classList);
             if (mines.includes(bar.classList[0])) {
-                alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
-                isGameOver = true;
-                showMines();
-                stopTimer();
+                if (isGameOver !== true) {
+                    alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
+                    isGameOver = true;
+                    showMines();
+                    stopTimer();
+                }
             }
         })
     })
@@ -142,8 +144,13 @@ const showMines = () => {
     const BOARD_BARS = document.querySelectorAll('.bar');
     BOARD_BARS.forEach((bar) => {
         if (mines.includes(bar.classList[0])) {
-            bar.innerText = '💣';
-            bar.classList.add('bomb');
+            if(bar.classList.contains('red-flag')) {
+                bar.classList.add('guessed-bomb');
+                bar.innerText = '💣🚩';
+            } else {
+                bar.innerText = '💣';
+                bar.classList.add('bomb');
+            }
         }
     })
 }

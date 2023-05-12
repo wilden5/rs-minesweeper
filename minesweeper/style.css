@@ -68,3 +68,9 @@ html {
     width: 220px;
     font-size: 32px;
 }
+
+.guessed-bomb {
+    font-size: 17px;
+    align-items: center;
+    background: orange;
+}
