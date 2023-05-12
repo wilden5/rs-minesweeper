@@ -63,7 +63,8 @@ html {
     row-gap: 1rem;
 }
 
-.restart-button {
+.restart-button,
+.start-game-button {
     width: 220px;
     font-size: 32px;
 }
