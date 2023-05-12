@@ -17,8 +17,7 @@ mines.push('3-3');
 mines.push('4-4');
 mines.push('5-5');
 
-// todo: 1. Remove click if user marked bar with a flag; 2. Bombs indicator should connects to flags? 3. Webpack?
-// todo: 4. Increase counter when contextclick?
+// todo: 3. Webpack? 4. Increase counter when context-click?
 
 const createBasicLayout = () => {
     const appendGameBoardElement = () => {
@@ -32,15 +31,19 @@ const createBasicLayout = () => {
 
         const NUMBER_OF_FLAGS_TEXT = document.createElement('div');
         NUMBER_OF_FLAGS_TEXT.classList.add('red-flags-information');
-        NUMBER_OF_FLAGS_TEXT.innerText = 'Number of 🚩 remained: ';
+        NUMBER_OF_FLAGS_TEXT.innerText = 'Number of 🚩 used: ';
 
         const NUMBER_OF_FLAGS = document.createElement('span');
         NUMBER_OF_FLAGS.classList.add('red-flags-number');
-        NUMBER_OF_FLAGS.innerText = GAME_DIFFICULTIES.easy.flags;
+        NUMBER_OF_FLAGS.innerText = '0';
 
         const TOTAL_BOMBS_ON_GAME_BOARD = document.createElement('div');
         TOTAL_BOMBS_ON_GAME_BOARD.classList.add('bombs-number');
-        TOTAL_BOMBS_ON_GAME_BOARD.innerText = `Number of 💣 on the board: ${GAME_DIFFICULTIES.easy.bombs}`;
+        TOTAL_BOMBS_ON_GAME_BOARD.innerText = 'Number of 💣 remaining: ';
+
+        const BOMBS_REMAINED = document.createElement('span');
+        BOMBS_REMAINED.classList.add('bombs-remained');
+        BOMBS_REMAINED.innerText = GAME_DIFFICULTIES.easy.bombs;
 
         const NUMBER_OF_CLICKS_TEXT = document.createElement('div');
         NUMBER_OF_CLICKS_TEXT.classList.add('clicks-number-information');
@@ -76,6 +79,7 @@ const createBasicLayout = () => {
         GAME_INFORMATION.appendChild(GAME_DURATION);
         GAME_INFORMATION.appendChild(GAME_RESTART_BUTTON);
         GAME_INFORMATION.appendChild(START_GAME_BUTTON);
+        TOTAL_BOMBS_ON_GAME_BOARD.appendChild(BOMBS_REMAINED);
         NUMBER_OF_CLICKS_TEXT.appendChild(NUMBER_OF_CLICKS);
         NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
         GAME_DURATION.appendChild(GAME_TIMER);
@@ -124,6 +128,9 @@ const handleBarClick = () => {
 
     BOARD_BARS.forEach((bar) => {
         bar.addEventListener('click', () => {
+            if (bar.classList.contains('red-flag')) {
+                return;
+            }
             if (isGameOver === false) {
                 clicksCounter.innerText = parseInt(clicksCounter.innerText) + 1;
             }
@@ -172,19 +179,22 @@ const handleRedFlag = () => {
     const RED_FLAG = '🚩';
     const BOARD_BARS = document.querySelectorAll('.bar');
     const RED_FLAGS_NUMBER = document.querySelector('.red-flags-number');
+    const BOMBS_REMAINED = document.querySelector('.bombs-remained');
 
     BOARD_BARS.forEach((bar) => {
         bar.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             if(isGameOver === false) {
                 if (bar.innerHTML === '') {
-                    if (RED_FLAGS_NUMBER.innerText > 0) {
-                        RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) - 1;
+                    if (RED_FLAGS_NUMBER.innerText < GAME_DIFFICULTIES.easy.bombs) {
+                        RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) + 1;
+                        BOMBS_REMAINED.innerText = parseInt(BOMBS_REMAINED.innerText) - 1;
                         bar.innerHTML = RED_FLAG;
                         bar.classList.toggle('red-flag');
                     }
                 } else {
-                    RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) + 1;
+                    RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) - 1;
+                    BOMBS_REMAINED.innerText = parseInt(BOMBS_REMAINED.innerText) + 1;
                     bar.innerHTML = '';
                     bar.classList.toggle('red-flag');
                 }
