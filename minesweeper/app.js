@@ -198,6 +198,7 @@ const startGameSession = () => {
         startTimer();
         handleBarClick();
         handleRedFlag();
+        restartGame();
     })
 }
 
