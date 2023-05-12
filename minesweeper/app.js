@@ -149,11 +149,15 @@ const showMines = () => {
 }
 
 const restartGame = () => {
+    const START_GAME_BUTTON = document.querySelector('.start-game-button');
     const RESTART_BUTTON = document.querySelector('.restart-button');
     RESTART_BUTTON.addEventListener('click', () => {
-        isGameOver = false;
         document.body.innerHTML = '';
+        isGameOver = false;
+        START_GAME_BUTTON.disabled = false;
+        timerInterval = 0;
         createLayout();
+        startGameSession();
     })
 }
 
@@ -200,6 +204,7 @@ const startGameSession = () => {
 const init = () => {
     createLayout();
     startGameSession();
+    restartGame();
 }
 
 init();
