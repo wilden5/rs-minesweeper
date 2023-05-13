@@ -1,0 +1,8 @@
+{
+  "easy": {
+    "rows": 10,
+    "columns": 10,
+    "bombs": 10,
+    "flags": 10
+  }
+}
