@@ -1,3 +1,8 @@
+import './index.html';
+import './style/_style.scss';
+
+import {startTimer, stopTimer, setTimerInterval} from "./modules/gameTimer";
+
 const gameBoard = [];
 const mines = [];
 let isGameOver = false;
@@ -17,7 +22,7 @@ mines.push('3-3');
 mines.push('4-4');
 mines.push('5-5');
 
-// todo: 3. Webpack? 4. Increase counter when context-click?
+// todo: 4. Increase counter when context-click?
 
 const createBasicLayout = () => {
     const appendGameBoardElement = () => {
@@ -89,24 +94,6 @@ const createBasicLayout = () => {
     appendGameBoardElement();
 }
 
-
-let timerInterval;
-
-function startTimer() {
-    const GAME_TIMER = document.querySelector('.timer-seconds');
-    let startTime = Date.now();
-    let elapsedTime = 0;
-
-    timerInterval = setInterval(function() {
-        elapsedTime = Math.floor((Date.now() - startTime) / 1000);
-        GAME_TIMER.innerText = elapsedTime;
-    }, 100);
-}
-
-function stopTimer() {
-    clearInterval(timerInterval);
-}
-
 const createGameBoard = (setRows, setColumns) => {
     const GAME_BOARD = document.querySelector('.game-board');
     for (let row = 0; row < setRows; row++) {
@@ -169,7 +156,7 @@ const restartGame = () => {
         document.body.innerHTML = '';
         isGameOver = false;
         START_GAME_BUTTON.disabled = false;
-        timerInterval = 0;
+        setTimerInterval(0);
         createLayout();
         startGameSession();
     })
