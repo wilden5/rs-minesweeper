@@ -1,4 +1,4 @@
-import GAME_DIFFICULTIES from '../data/difficulties.json';
+import GAME_DIFFICULTIES from '../../data/difficulties.json';
 
 const gameBoard = [];
 

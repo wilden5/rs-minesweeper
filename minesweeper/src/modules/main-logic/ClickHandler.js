@@ -1,6 +1,6 @@
-import {stopTimer} from "./timerHandler";
-import {getIsGameOver, setIsGameOver} from "./gameOverHandler";
-import {getMines, showMines} from "./minesHandler";
+import {stopTimer} from "../features/SpotwatchHandler";
+import {getIsGameOver, setIsGameOver} from "./GameStateHandler";
+import {getMines, showMines} from "./MinesHandler";
 
 export const handleBarClick = () => {
     const BOARD_BARS = document.querySelectorAll('.bar');

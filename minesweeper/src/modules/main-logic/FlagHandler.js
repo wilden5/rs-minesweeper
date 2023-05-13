@@ -1,5 +1,5 @@
-import {getIsGameOver} from "./gameOverHandler";
-import GAME_DIFFICULTIES from "../data/difficulties.json";
+import {getIsGameOver} from "./GameStateHandler";
+import GAME_DIFFICULTIES from "../../data/difficulties.json";
 
 export const handleRedFlag = () => {
     const RED_FLAG = '🚩';

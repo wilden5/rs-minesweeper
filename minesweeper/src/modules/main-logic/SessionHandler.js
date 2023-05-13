@@ -1,8 +1,8 @@
-import {setIsGameOver} from "./gameOverHandler";
-import {setTimerInterval, startTimer} from "./timerHandler";
-import {handleBarClick} from "./clickHandler";
-import {handleRedFlag} from "./redFlagHandler";
-import {initGameLayout} from "./layoutHandler";
+import {setIsGameOver} from "./GameStateHandler";
+import {setTimerInterval, startTimer} from "../features/SpotwatchHandler";
+import {handleBarClick} from "./ClickHandler";
+import {handleRedFlag} from "./FlagHandler";
+import {initGameLayout} from "./LayoutHandler";
 
 export const restartGame = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
