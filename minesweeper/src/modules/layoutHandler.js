@@ -53,3 +53,8 @@ export const createGameBoard = (setRows, setColumns) => {
     }
     console.log(gameBoard);
 }
+
+export const initGameLayout = () => {
+    createBasicLayout();
+    createGameBoard(GAME_DIFFICULTIES.easy.rows, GAME_DIFFICULTIES.easy.columns);
+};
