@@ -1,78 +1,80 @@
 @import "var";
 
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .game-board {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: $default-size;
-    height: $default-size;
-    background-color: lightgray;
-    border: 5px solid cadetblue;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: $default-size;
+  height: $default-size;
+  background-color: $color-lightgray;
+  border: 5px solid $color-cadetblue;
 
-    div {
-        width: 4.8rem;
-        height: 4.8rem;
-        border: 1px solid white;
-    }
+  div {
+    width: 4.8rem;
+    height: 4.8rem;
+    border: 1px solid $color-white;
+  }
 }
 
 .bar-clicked {
-    background-color: darkgray;
+  background-color: $color-darkgray;
 }
 
-.nearby-bombs1 {
-    color: blue;
-}
+.nearby-bombs {
+  &1 {
+    color: $color-blue;
+  }
 
-.nearby-bombs2 {
-    color: green;
-}
+  &2 {
+    color: $color-green;
+  }
 
-.nearby-bombs3 {
-    color: red;
-}
+  &3 {
+    color: $color-red;
+  }
 
-.nearby-bombs4 {
-    color: darkblue;
-}
+  &4 {
+    color: $color-darkblue;
+  }
 
-.nearby-bombs5 {
-    color: brown;
+  &5 {
+    color: $color-brown;
+  }
 }
 
 .red-flag,
 .bomb {
-    display: flex;
-    justify-content: center;
-    font-size: 32px;
+  display: flex;
+  justify-content: center;
+  font-size: 3.2rem;
 }
 
 .bomb {
-    background-color: red;
+  background-color: $color-red;
 }
 
 .game-information {
-    width: $default-size;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 3rem;
-    margin: 0 auto 1rem;
-    row-gap: 1rem;
+  width: $default-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto 1rem;
+  row-gap: 1rem;
 }
 
 .restart-button,
 .start-game-button {
-    width: 220px;
-    font-size: 32px;
+  width: 22rem;
+  font-size: 3.2rem;
 }
 
 .guessed-bomb {
-    font-size: 17px;
-    align-items: center;
-    background: orange;
+  font-size: 1.7rem;
+  align-items: center;
+  background: $color-orange;
 }
