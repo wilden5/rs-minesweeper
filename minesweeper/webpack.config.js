@@ -48,15 +48,17 @@ module.exports = { // configuration object for webpack
                 type: 'javascript/auto'
             },
             {
-                test: /\.m?js$/,
+                test: /\.(?:js|mjs|cjs)$/i,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: [
+                            ['@babel/preset-env', { targets: "defaults" }]
+                        ]
                     }
                 }
-            }
+            },
         ]
     }
 }
