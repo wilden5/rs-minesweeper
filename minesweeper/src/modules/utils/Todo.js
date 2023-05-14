@@ -5,4 +5,4 @@
 // todo: 5. Latest 10 results are saved in the high score table and can be viewed
 // todo: 6. Functionality to save the game state
 // todo: 7. Dark/light themes of the game
-// todo: 8.
+// todo: 8. issue with number of bombs to the nearest bars after restart

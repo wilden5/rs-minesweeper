@@ -4,7 +4,7 @@ import './index.scss';
 import {initGameLayout} from "./modules/main-logic/LayoutHandler";
 import {startGameSession} from "./modules/main-logic/SessionHandler";
 
-const initApp = () => {
+export const initApp = () => {
     initGameLayout();
     startGameSession();
 }

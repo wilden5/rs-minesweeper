@@ -2,7 +2,7 @@ import {setIsGameOver} from "./GameStateHandler";
 import {setTimerInterval, startTimer} from "../features/SpotwatchHandler";
 import {handleBarClick} from "./ClickHandler";
 import {handleRedFlag} from "./FlagHandler";
-import {initGameLayout} from "./LayoutHandler";
+import {initApp} from "../../index";
 
 export const restartGame = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -12,8 +12,7 @@ export const restartGame = () => {
         setIsGameOver(false);
         START_GAME_BUTTON.disabled = false;
         setTimerInterval(0);
-        initGameLayout();
-        startGameSession();
+        initApp();
     })
 }
 
