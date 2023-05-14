@@ -8,6 +8,10 @@ export const setClickCounter = (plusValue) => {
     clicksCounter.innerText = parseInt(clicksCounter.innerText) + plusValue;
 }
 
+export const getClickCounter = () => {
+    return parseInt(clicksCounter.innerText);
+}
+
 export const handleBarClick = () => {
     const BOARD_BARS = document.querySelectorAll('.bar');
     clicksCounter = document.querySelector('.clicks-number');

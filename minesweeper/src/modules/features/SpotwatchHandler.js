@@ -1,4 +1,5 @@
 let timerInterval;
+
 export const startTimer = () => {
     const GAME_TIMER = document.querySelector('.timer-seconds');
     let startTime = Date.now();
@@ -16,4 +17,8 @@ export const stopTimer = () => {
 
 export const setTimerInterval = (value) => {
     timerInterval = value;
+}
+
+export const getTimerInterval = () => {
+    return document.querySelector('.timer-seconds').innerText;
 }

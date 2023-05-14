@@ -1,7 +1,8 @@
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {getGameBoard} from "./LayoutHandler";
 import {setIsGameOver} from "./GameStateHandler";
-import {stopTimer} from "../features/SpotwatchHandler";
+import {getTimerInterval, stopTimer} from "../features/SpotwatchHandler";
+import {getClickCounter} from "./ClickHandler";
 
 const mines = [];
 let barsClickedCounter = 0;
@@ -92,7 +93,7 @@ export const checkMines = (row, column) => {
         setIsGameOver(true);
         showMines();
         stopTimer();
-        alert('Hooray! You found all mines in ## seconds and N moves!')
+        alert(`Hooray! You found all mines in ${getTimerInterval()} seconds and ${getClickCounter()} moves!`);
     }
     console.log(barsClickedCounter)
 }
