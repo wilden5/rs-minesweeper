@@ -28,10 +28,12 @@ export const handleBarClick = () => {
                     stopTimer();
                 }
             } else {
-                let coordinates = bar.classList[0].split('-');
-                let barRowCoordinates = parseInt(coordinates[0]);
-                let barColumnCoordinates = parseInt(coordinates[1]);
-                checkMines(barRowCoordinates,barColumnCoordinates);
+                if (getIsGameOver() !== true) {
+                    let coordinates = bar.classList[0].split('-');
+                    let barRowCoordinates = parseInt(coordinates[0]);
+                    let barColumnCoordinates = parseInt(coordinates[1]);
+                    checkMines(barRowCoordinates, barColumnCoordinates);
+                }
             }
         })
     })
