@@ -2,6 +2,10 @@ import GAME_DIFFICULTIES from '../../data/difficulties.json';
 
 const gameBoard = [];
 
+export const getGameBoard = () => {
+    return gameBoard;
+}
+
 const createElement = (type, classes = [], text = '') => {
     const element = document.createElement(type);
     classes.forEach(className => element.classList.add(className));

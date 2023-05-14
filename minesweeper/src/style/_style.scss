@@ -25,25 +25,16 @@ html {
 }
 
 .nearby-bombs {
-  &1 {
-    color: $color-blue;
-  }
+  &1 {color: $color-blue;}
+  &2 {color: $color-green;}
+  &3 {color: $color-red;}
+  &4 {color: $color-darkblue;}
+  &5 {color: $color-brown;}
+}
 
-  &2 {
-    color: $color-green;
-  }
-
-  &3 {
-    color: $color-red;
-  }
-
-  &4 {
-    color: $color-darkblue;
-  }
-
-  &5 {
-    color: $color-brown;
-  }
+.nb {
+  font-size: 4rem;
+  text-align: center;
 }
 
 .red-flag,

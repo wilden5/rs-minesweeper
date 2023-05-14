@@ -1,11 +1,11 @@
 import {stopTimer} from "../features/SpotwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./GameStateHandler";
-import {getMines, showMines} from "./MinesHandler";
+import {checkMines, getMines, showMines} from "./MinesHandler";
 
 let clicksCounter;
 
-export const setClickCounter = (value) => {
-    clicksCounter.innerText = parseInt(clicksCounter.innerText) + value;
+export const setClickCounter = (plusValue) => {
+    clicksCounter.innerText = parseInt(clicksCounter.innerText) + plusValue;
 }
 
 export const handleBarClick = () => {
@@ -27,6 +27,11 @@ export const handleBarClick = () => {
                     showMines();
                     stopTimer();
                 }
+            } else {
+                let coordinates = bar.classList[0].split('-');
+                let barRowCoordinates = parseInt(coordinates[0]);
+                let barColumnCoordinates = parseInt(coordinates[1]);
+                checkMines(barRowCoordinates,barColumnCoordinates);
             }
         })
     })
