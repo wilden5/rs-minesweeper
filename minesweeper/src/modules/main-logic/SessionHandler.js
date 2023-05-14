@@ -17,6 +17,13 @@ export const restartGame = () => {
     })
 }
 
+export const restartMock = () => {
+    const RESTART_BUTTON = document.querySelector('.restart-button');
+    RESTART_BUTTON.addEventListener('click', () => {
+        location.reload();
+    })
+}
+
 export const startGameSession = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
     START_GAME_BUTTON.addEventListener('click', () => {
@@ -25,6 +32,7 @@ export const startGameSession = () => {
         startTimer();
         handleBarClick();
         handleRedFlag();
-        restartGame();
+        //restartGame();
+        restartMock();
     })
 }
