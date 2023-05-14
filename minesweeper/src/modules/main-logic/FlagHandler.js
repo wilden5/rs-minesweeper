@@ -1,5 +1,6 @@
 import {getIsGameOver} from "./GameStateHandler";
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
+import {setClickCounter} from "./ClickHandler";
 
 export const handleRedFlag = () => {
     const RED_FLAG = '🚩';
@@ -11,6 +12,7 @@ export const handleRedFlag = () => {
         bar.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             if(getIsGameOver() === false) {
+                setClickCounter(1);
                 if (bar.innerHTML === '') {
                     if (RED_FLAGS_NUMBER.innerText < GAME_DIFFICULTIES.easy.bombs) {
                         RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) + 1;

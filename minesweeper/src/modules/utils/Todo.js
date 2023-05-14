@@ -1,4 +1,4 @@
-// todo: 1. Increase counter when context-click?
+// todo: 1.
 // todo: 2.
 // todo: 3.
 // todo: 4.
