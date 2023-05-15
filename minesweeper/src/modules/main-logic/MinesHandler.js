@@ -3,6 +3,7 @@ import {getGameBoard} from "./LayoutHandler";
 import {setIsGameOver} from "./GameStateHandler";
 import {getTimerInterval, stopTimer} from "../features/SpotwatchHandler";
 import {getClickCounter} from "./ClickHandler";
+import {playGameWinSound} from "../features/soundHandler";
 
 const mines = [];
 let barsClickedCounter = 0;
@@ -93,6 +94,7 @@ export const checkMines = (row, column) => {
         setIsGameOver(true);
         showMines();
         stopTimer();
+        playGameWinSound();
         alert(`Hooray! You found all mines in ${getTimerInterval()} seconds and ${getClickCounter()} moves!`);
     }
     console.log(barsClickedCounter)

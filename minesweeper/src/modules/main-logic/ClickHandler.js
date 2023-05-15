@@ -1,6 +1,7 @@
 import {stopTimer} from "../features/SpotwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./GameStateHandler";
 import {checkMines, getMines, showMines} from "./MinesHandler";
+import {playGameOverSound, playOpenBarSound} from "../features/soundHandler";
 
 let clicksCounter;
 
@@ -20,19 +21,23 @@ export const handleBarClick = () => {
             if (bar.classList.contains('red-flag')) {
                 return;
             }
-            if (getIsGameOver() === false) {
+            if (getIsGameOver() === false && !bar.classList.contains('bar-clicked')) {
                 setClickCounter(1);
             }
             console.log(bar.classList);
             if (getMines().includes(bar.classList[0])) {
                 if (getIsGameOver() !== true) {
-                    alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
                     setIsGameOver(true);
                     showMines();
                     stopTimer();
+                    playGameOverSound();
+                    alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
                 }
             } else {
                 if (getIsGameOver() !== true) {
+                    if(!bar.classList.contains('bar-clicked')) {
+                        playOpenBarSound();
+                    }
                     let coordinates = bar.classList[0].split('-');
                     let barRowCoordinates = parseInt(coordinates[0]);
                     let barColumnCoordinates = parseInt(coordinates[1]);

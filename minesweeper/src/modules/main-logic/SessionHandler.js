@@ -4,6 +4,7 @@ import {handleBarClick} from "./ClickHandler";
 import {handleRedFlag} from "./FlagHandler";
 import {initApp} from "../../index";
 import {setMines} from "./MinesHandler";
+import {playGameStartSound} from "../features/soundHandler";
 
 export const restartGame = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -28,6 +29,7 @@ export const startGameSession = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
     START_GAME_BUTTON.addEventListener('click', () => {
         START_GAME_BUTTON.disabled = true;
+        playGameStartSound();
         //setMines();
         startTimer();
         handleBarClick();

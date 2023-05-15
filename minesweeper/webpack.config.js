@@ -20,6 +20,7 @@ module.exports = { // configuration object for webpack
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         filename: 'index.[contenthash].js',
+        assetModuleFilename: 'assets/[hash][ext][query]',
     },
     plugins: [ // specify the plugins to use with Webpack
         new HtmlWebpackPlugin({ // generates HTML file
@@ -58,6 +59,10 @@ module.exports = { // configuration object for webpack
                         ]
                     }
                 }
+            },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+                type: 'asset/resource',
             },
         ]
     }
