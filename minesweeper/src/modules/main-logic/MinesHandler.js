@@ -3,7 +3,7 @@ import {getGameBoard} from "./LayoutHandler";
 import {setIsGameOver} from "./GameStateHandler";
 import {getTimerInterval, stopTimer} from "../features/SpotwatchHandler";
 import {getClickCounter} from "./ClickHandler";
-import {playGameWinSound} from "../features/soundHandler";
+import {playGameWinSound} from "../features/SoundHandler";
 
 const mines = [];
 let barsClickedCounter = 0;

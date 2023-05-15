@@ -1,7 +1,7 @@
 import {getIsGameOver} from "./GameStateHandler";
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {setClickCounter} from "./ClickHandler";
-import {playSetFlagSound} from "../features/soundHandler";
+import {playSetFlagSound} from "../features/SoundHandler";
 
 export const handleRedFlag = () => {
     const RED_FLAG = '🚩';

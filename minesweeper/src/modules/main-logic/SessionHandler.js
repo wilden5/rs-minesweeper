@@ -4,8 +4,8 @@ import {handleBarClick} from "./ClickHandler";
 import {handleRedFlag} from "./FlagHandler";
 import {initApp} from "../../index";
 import {setMines} from "./MinesHandler";
-import {playGameStartSound} from "../features/soundHandler";
-import {loadGameState, saveGameState} from "../features/storageHandler";
+import {playGameStartSound} from "../features/SoundHandler";
+import {loadGameState, saveGameState} from "../features/StorageHandler";
 
 export const restartGame = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -41,9 +41,9 @@ export const startGameSession = () => {
 
     /*window.addEventListener('beforeunload', () => {
         saveGameState();
-    });*/
+    });
 
-    /*window.onload = () => {
+    window.onload = () => {
         loadGameState();
     };*/
 }

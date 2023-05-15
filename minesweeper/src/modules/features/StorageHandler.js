@@ -36,4 +36,6 @@ export const loadGameState = () => {
     }
 }
 
-//window.onload = loadGameState;
+export const clearLocalStorage = () => {
+    localStorage.clear();
+}

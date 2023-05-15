@@ -1,7 +1,7 @@
 import {stopTimer} from "../features/SpotwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./GameStateHandler";
 import {checkMines, getMines, showMines} from "./MinesHandler";
-import {playGameOverSound, playOpenBarSound} from "../features/soundHandler";
+import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
 
 let clicksCounter;
 
