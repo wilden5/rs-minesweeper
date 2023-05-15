@@ -1,8 +1,8 @@
-import gameStartMp3 from "../../data/assets/game-start.mp3";
-import gameOverMp3 from "../../data/assets/game-over.mp3";
-import gameWinMp3 from "../../data/assets/game-win.mp3";
-import setFlagMp3 from "../../data/assets/set-flag.mp3";
-import openBarMp3 from "../../data/assets/open-a-bar.mp3";
+import gameStartMp3 from "../../data/assets/sounds/game-start.mp3";
+import gameOverMp3 from "../../data/assets/sounds/game-over.mp3";
+import gameWinMp3 from "../../data/assets/sounds/game-win.mp3";
+import setFlagMp3 from "../../data/assets/sounds/set-flag.mp3";
+import openBarMp3 from "../../data/assets/sounds/open-a-bar.mp3";
 
 const GAME_START_SOUND = new Audio(gameStartMp3);
 const GAME_OVER_SOUND = new Audio(gameOverMp3);

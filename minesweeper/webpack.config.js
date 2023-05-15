@@ -24,7 +24,8 @@ module.exports = { // configuration object for webpack
     },
     plugins: [ // specify the plugins to use with Webpack
         new HtmlWebpackPlugin({ // generates HTML file
-            template: path.resolve(__dirname, 'src', 'index.html')
+            template: path.resolve(__dirname, 'src', 'index.html'),
+            favicon: path.resolve(__dirname, 'src/data/assets/images', 'minesweeper-icon.png')
         }),
         new MiniCssExtractPlugin({ // extract css into a separate file
             filename: '[name].[contenthash].css',
