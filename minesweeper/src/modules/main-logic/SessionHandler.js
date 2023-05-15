@@ -5,6 +5,7 @@ import {handleRedFlag} from "./FlagHandler";
 import {initApp} from "../../index";
 import {setMines} from "./MinesHandler";
 import {playGameStartSound} from "../features/soundHandler";
+import {loadGameState, saveGameState} from "../features/storageHandler";
 
 export const restartGame = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -37,4 +38,12 @@ export const startGameSession = () => {
         //restartGame();
         restartMock();
     })
+
+    /*window.addEventListener('beforeunload', () => {
+        saveGameState();
+    });*/
+
+    /*window.onload = () => {
+        loadGameState();
+    };*/
 }
