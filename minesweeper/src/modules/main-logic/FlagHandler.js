@@ -12,7 +12,7 @@ export const handleRedFlag = () => {
     BOARD_BARS.forEach((bar) => {
         bar.addEventListener('contextmenu', (event) => {
             event.preventDefault();
-            if(getIsGameOver() === false) {
+            if (getIsGameOver() === false && !bar.classList.contains('bar-clicked')) {
                 setClickCounter(1);
                 if (bar.innerHTML === '') {
                     if (RED_FLAGS_NUMBER.innerText < GAME_DIFFICULTIES.easy.bombs) {
