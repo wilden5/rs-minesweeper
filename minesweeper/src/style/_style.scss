@@ -11,7 +11,6 @@ html {
   width: $default-size;
   height: $default-size;
   background-color: $color-lightgray;
-  //border: 5px solid $color-cadetblue;
 
   div {
     width: 4.8rem;
@@ -100,4 +99,8 @@ html {
   justify-content: space-around;
   gap: 5px;
   cursor: default;
+}
+
+.pause {
+  display: none;
 }
