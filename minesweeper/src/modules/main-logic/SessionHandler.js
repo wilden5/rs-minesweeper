@@ -1,5 +1,5 @@
 import {initStopwatch} from "../features/StopwatchHandler";
-import {handleBarClick} from "./ClickHandler";
+import {initClickOnBar} from "./ClickHandler";
 import {handleRedFlag} from "./FlagHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 
@@ -17,7 +17,7 @@ export const startGameSession = () => {
         START_GAME_BUTTON.disabled = true;
         playGameStartSound();
         initStopwatch();
-        handleBarClick();
+        initClickOnBar();
         handleRedFlag();
     })
 }

@@ -1,6 +1,6 @@
 import {getIsGameOver} from "./SessionHandler";
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
-import {setClickCounter} from "./ClickHandler";
+import {increaseClickCounter} from "./ClickHandler";
 import {playSetFlagSound} from "../features/SoundHandler";
 
 export const handleRedFlag = () => {
@@ -13,7 +13,7 @@ export const handleRedFlag = () => {
         bar.addEventListener('contextmenu', (event) => {
             event.preventDefault();
             if (getIsGameOver() === false && !bar.classList.contains('bar-clicked')) {
-                setClickCounter(1);
+                increaseClickCounter(1);
                 if (bar.innerHTML === '') {
                     if (RED_FLAGS_NUMBER.innerText < GAME_DIFFICULTIES.easy.bombs) {
                         playSetFlagSound();
