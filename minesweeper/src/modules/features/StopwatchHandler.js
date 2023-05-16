@@ -2,7 +2,7 @@ let timerInterval;
 let startTime;
 let elapsedTime = 0;
 
-export const startTimer = () => {
+export const startStopwatch = () => {
     const GAME_TIMER = document.querySelector('.timer-seconds');
     startTime = Date.now() - elapsedTime * 1000;
     timerInterval = setInterval(function() {
@@ -11,21 +11,21 @@ export const startTimer = () => {
     }, 100);
 }
 
-export const stopTimer = () => {
+export const stopStopwatch = () => {
     clearInterval(timerInterval);
 }
 
-export const getTimerInterval = () => {
+export const getStopwatchValue = () => {
     return document.querySelector('.timer-seconds').innerText;
 }
 
-export const initTimer = () => {
+export const initStopwatch = () => {
     const storedSessionDuration = JSON.parse(localStorage.getItem('minesweeperGameState'))?.sessionDuration;
     if (storedSessionDuration) {
         elapsedTime = parseInt(storedSessionDuration);
-        startTimer();
+        startStopwatch();
     } else {
         elapsedTime = 0;
-        startTimer();
+        startStopwatch();
     }
 }

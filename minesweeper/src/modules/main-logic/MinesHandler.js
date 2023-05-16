@@ -1,7 +1,7 @@
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {getGameBoard} from "./LayoutHandler";
 import {setIsGameOver} from "./SessionHandler";
-import {getTimerInterval, stopTimer} from "../features/SpotwatchHandler";
+import {getStopwatchValue, stopStopwatch} from "../features/StopwatchHandler";
 import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";
 
@@ -103,9 +103,9 @@ export const checkMines = (row, column) => {
     if (barsClickedCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - 5) {
         setIsGameOver(true);
         showMines();
-        stopTimer();
+        stopStopwatch();
         playGameWinSound();
-        alert(`Hooray! You found all mines in ${getTimerInterval()} seconds and ${getClickCounter()} moves!`);
+        alert(`Hooray! You found all mines in ${getStopwatchValue()} seconds and ${getClickCounter()} moves!`);
     }
     console.log(barsClickedCounter)
 }

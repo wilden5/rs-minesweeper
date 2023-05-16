@@ -1,4 +1,4 @@
-import {stopTimer} from "../features/SpotwatchHandler";
+import {stopStopwatch} from "../features/StopwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./SessionHandler";
 import {checkMines, getMines, showMines} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
@@ -29,7 +29,7 @@ export const handleBarClick = () => {
                 if (getIsGameOver() !== true) {
                     setIsGameOver(true);
                     showMines();
-                    stopTimer();
+                    stopStopwatch();
                     playGameOverSound();
                     alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
                 }

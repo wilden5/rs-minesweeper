@@ -6,7 +6,7 @@ import {startGameSession} from "./modules/main-logic/SessionHandler";
 import {initButtons} from "./modules/utils/buttonsHandler";
 import {saveGameState} from "./modules/features/StorageHandler";
 import {getClickCounter} from "./modules/main-logic/ClickHandler";
-import {getTimerInterval} from "./modules/features/SpotwatchHandler";
+import {getStopwatchValue} from "./modules/features/StopwatchHandler";
 
 export const initApp = () => {
     initGameLayout();
@@ -17,7 +17,7 @@ export const initApp = () => {
 initApp();
 
 window.addEventListener('beforeunload', () => {
-    if (getClickCounter() > 0 || parseInt(getTimerInterval()) > 0) {
+    if (getClickCounter() > 0 || parseInt(getStopwatchValue()) > 0) {
         saveGameState();
     }
 });

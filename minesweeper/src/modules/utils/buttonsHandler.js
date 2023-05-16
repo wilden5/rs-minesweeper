@@ -1,6 +1,6 @@
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {playGameStartSound} from "../features/SoundHandler";
-import {initTimer} from "../features/SpotwatchHandler";
+import {initStopwatch} from "../features/StopwatchHandler";
 import {handleBarClick} from "../main-logic/ClickHandler";
 import {handleRedFlag} from "../main-logic/FlagHandler";
 import {clearLocalStorage, loadGameState} from "../features/StorageHandler";
@@ -39,7 +39,7 @@ export const continueYourGameButton = () => {
         loadGameState();
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
         playGameStartSound();
-        initTimer();
+        initStopwatch();
         handleBarClick();
         handleRedFlag();
     })
