@@ -8,6 +8,15 @@ import {playGameWinSound} from "../features/SoundHandler";
 const mines = [];
 let barsClickedCounter = 0;
 
+export const getBarsClickedCounter = () => {
+    return barsClickedCounter;
+}
+
+export const setBarsClickedCounter = (value) => {
+    barsClickedCounter = value;
+}
+
+
 mines.push('1-1');
 mines.push('2-2');
 mines.push('3-3');
@@ -60,6 +69,7 @@ export const checkMines = (row, column) => {
 
     getGameBoard()[row][column].classList.add('bar-clicked');
     barsClickedCounter += 1;
+    console.log(barsClickedCounter +'here')
 
     let minesCounter = 0;
 
