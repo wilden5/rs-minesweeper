@@ -1,6 +1,6 @@
 import GAME_DIFFICULTIES from '../../data/difficulties.json';
 
-const gameBoard = [];
+let gameBoard = [];
 
 export const getGameBoard = () => {
     return gameBoard;
@@ -56,6 +56,7 @@ export const createBasicLayout = () => {
 
 export const createGameBoard = (setRows, setColumns) => {
     const GAME_BOARD = document.querySelector('.game-board');
+    gameBoard = [];
     for (let row = 0; row < setRows; row++) {
         let boardRow = [];
         for (let column = 0; column < setColumns; column++) {
@@ -65,7 +66,6 @@ export const createGameBoard = (setRows, setColumns) => {
         }
         gameBoard.push(boardRow);
     }
-    console.log(gameBoard);
 }
 
 export const initGameLayout = () => {
