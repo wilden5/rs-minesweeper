@@ -10,6 +10,8 @@ import {initApp} from "../../index";
 export const checkButtonsState = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
     const CONTINUE_YOUR_SESSION_BUTTON = document.querySelector('.continue-button');
+    const GAME_INFORMATION_WRAPPER = document.querySelector('.game-information-wrapper');
+    const GAME_BOARD_ELEMENT = document.querySelector('.game-board');
 
     if (localStorage.getItem('minesweeperGameState') === null) {
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
@@ -21,8 +23,8 @@ export const checkButtonsState = () => {
     }
 
     if (localStorage.getItem('minesweeperGameState')) {
-        document.querySelector('.game-information-wrapper').classList.add('pause');
-        document.querySelector('.game-board').classList.add('pause');
+        GAME_INFORMATION_WRAPPER.classList.add('pause');
+        GAME_BOARD_ELEMENT.classList.add('pause');
         START_GAME_BUTTON.disabled = true;
 
         if (JSON.parse(localStorage.getItem('minesweeperGameState')).isGameOver === true) {
@@ -33,9 +35,12 @@ export const checkButtonsState = () => {
 
 export const continueYourGameButton = () => {
     const CONTINUE_YOUR_SESSION_BUTTON = document.querySelector('.continue-button');
+    const GAME_INFORMATION_WRAPPER = document.querySelector('.game-information-wrapper');
+    const GAME_BOARD_ELEMENT = document.querySelector('.game-board');
+
     CONTINUE_YOUR_SESSION_BUTTON.addEventListener('click', () => {
-        document.querySelector('.game-information-wrapper').classList.remove('pause');
-        document.querySelector('.game-board').classList.remove('pause');
+        GAME_INFORMATION_WRAPPER.classList.remove('pause');
+        GAME_BOARD_ELEMENT.classList.remove('pause');
         loadGameState();
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
         playGameStartSound();
