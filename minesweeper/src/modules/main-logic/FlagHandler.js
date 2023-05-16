@@ -3,7 +3,7 @@ import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {increaseClickCounter} from "./ClickHandler";
 import {playSetFlagSound} from "../features/SoundHandler";
 
-export const handleRedFlag = () => {
+export const initRedFlag = () => {
     const RED_FLAG = '🚩';
     const BOARD_BARS = document.querySelectorAll('.bar');
     const RED_FLAGS_NUMBER = document.querySelector('.red-flags-number');

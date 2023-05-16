@@ -2,7 +2,7 @@ import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "../main-logic/ClickHandler";
-import {handleRedFlag} from "../main-logic/FlagHandler";
+import {initRedFlag} from "../main-logic/FlagHandler";
 import {clearLocalStorage, loadGameState} from "../features/StorageHandler";
 import {setBarsClickedCounter} from "../main-logic/MinesHandler";
 import {initApp} from "../../index";
@@ -41,7 +41,7 @@ export const continueYourGameButton = () => {
         playGameStartSound();
         initStopwatch();
         initClickOnBar();
-        handleRedFlag();
+        initRedFlag();
     })
 }
 

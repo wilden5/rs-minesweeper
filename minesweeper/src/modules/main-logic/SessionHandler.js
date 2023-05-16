@@ -1,6 +1,6 @@
 import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "./ClickHandler";
-import {handleRedFlag} from "./FlagHandler";
+import {initRedFlag} from "./FlagHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 
 let isGameOver = false;
@@ -18,6 +18,6 @@ export const startGameSession = () => {
         playGameStartSound();
         initStopwatch();
         initClickOnBar();
-        handleRedFlag();
+        initRedFlag();
     })
 }
