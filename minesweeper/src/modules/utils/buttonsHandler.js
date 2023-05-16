@@ -4,7 +4,7 @@ import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "../main-logic/ClickHandler";
 import {initRedFlag} from "../main-logic/FlagHandler";
 import {clearLocalStorage, loadGameState} from "../features/StorageHandler";
-import {setBarsClickedCounter} from "../main-logic/MinesHandler";
+import {setClickedBarsCounter} from "../main-logic/MinesHandler";
 import {initApp} from "../../index";
 
 export const checkButtonsState = () => {
@@ -51,7 +51,7 @@ export const restartCurrentGameButton = () => {
         clearLocalStorage();
         setIsGameOver(false);
         document.body.innerHTML = '';
-        setBarsClickedCounter(0);
+        setClickedBarsCounter(0);
         initApp();
     })
 }

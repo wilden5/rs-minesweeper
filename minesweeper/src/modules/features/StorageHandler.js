@@ -1,5 +1,5 @@
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
-import {getBarsClickedCounter, setBarsClickedCounter} from "../main-logic/MinesHandler";
+import {getClickedBarsCounter, setClickedBarsCounter} from "../main-logic/MinesHandler";
 
 export const saveGameState = () => {
     const gameState = {
@@ -8,7 +8,7 @@ export const saveGameState = () => {
         numberOfClicks: document.querySelector('.clicks-number').innerText,
         sessionDuration: document.querySelector('.timer-seconds').innerText,
         isGameOver: getIsGameOver(),
-        barClickedCounter: getBarsClickedCounter(),
+        barClickedCounter: getClickedBarsCounter(),
         barClasses: [],
         barInnerText: []
     };
@@ -29,7 +29,7 @@ export const loadGameState = () => {
         document.querySelector('.clicks-number').innerText = gameState.numberOfClicks;
         document.querySelector('.timer-seconds').innerText = gameState.sessionDuration;
         setIsGameOver(gameState.isGameOver);
-        setBarsClickedCounter(gameState.barClickedCounter);
+        setClickedBarsCounter(gameState.barClickedCounter);
 
         const bars = document.querySelectorAll('.bar');
         bars.forEach((bar, index) => {

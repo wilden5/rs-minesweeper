@@ -1,6 +1,6 @@
 import {stopStopwatch} from "../features/StopwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./SessionHandler";
-import {checkMines, getMines, showMines} from "./MinesHandler";
+import {checkMines, getGameBoardMinesLocation, showMinesLocation} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
 
 let clickCounter;
@@ -25,10 +25,10 @@ export const initClickOnBar = () => {
                 increaseClickCounter(1);
             }
             console.log(bar.classList);
-            if (getMines().includes(bar.classList[0])) {
+            if (getGameBoardMinesLocation().includes(bar.classList[0])) {
                 if (getIsGameOver() !== true) {
                     setIsGameOver(true);
-                    showMines();
+                    showMinesLocation();
                     stopStopwatch();
                     playGameOverSound();
                     alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
