@@ -1,4 +1,4 @@
-import {getIsGameOver, setIsGameOver} from "../main-logic/GameStateHandler";
+import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {getBarsClickedCounter, setBarsClickedCounter} from "../main-logic/MinesHandler";
 
 export const saveGameState = () => {

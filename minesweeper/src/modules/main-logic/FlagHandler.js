@@ -1,4 +1,4 @@
-import {getIsGameOver} from "./GameStateHandler";
+import {getIsGameOver} from "./SessionHandler";
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {setClickCounter} from "./ClickHandler";
 import {playSetFlagSound} from "../features/SoundHandler";

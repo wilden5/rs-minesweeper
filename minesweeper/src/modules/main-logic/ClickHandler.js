@@ -1,5 +1,5 @@
 import {stopTimer} from "../features/SpotwatchHandler";
-import {getIsGameOver, setIsGameOver} from "./GameStateHandler";
+import {getIsGameOver, setIsGameOver} from "./SessionHandler";
 import {checkMines, getMines, showMines} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
 

@@ -1,4 +1,4 @@
-import {getIsGameOver, setIsGameOver} from "../main-logic/GameStateHandler";
+import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 import {initTimer} from "../features/SpotwatchHandler";
 import {handleBarClick} from "../main-logic/ClickHandler";

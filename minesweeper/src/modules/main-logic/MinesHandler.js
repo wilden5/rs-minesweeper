@@ -1,6 +1,6 @@
 import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {getGameBoard} from "./LayoutHandler";
-import {setIsGameOver} from "./GameStateHandler";
+import {setIsGameOver} from "./SessionHandler";
 import {getTimerInterval, stopTimer} from "../features/SpotwatchHandler";
 import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";

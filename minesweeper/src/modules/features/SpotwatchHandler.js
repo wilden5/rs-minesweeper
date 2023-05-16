@@ -15,10 +15,6 @@ export const stopTimer = () => {
     clearInterval(timerInterval);
 }
 
-export const setTimerInterval = (value) => {
-    timerInterval = value;
-}
-
 export const getTimerInterval = () => {
     return document.querySelector('.timer-seconds').innerText;
 }
