@@ -4,6 +4,14 @@ html {
   font-size: 10px;
 }
 
+body {
+  background-color: ghostwhite;
+}
+
+.body-dark {
+  background-color: black;
+}
+
 .game-board {
   display: flex;
   flex-wrap: wrap;
@@ -16,6 +24,14 @@ html {
     width: 4.8rem;
     height: 4.8rem;
     border: 1px solid $color-white;
+  }
+}
+
+.game-board-dark {
+  background-color: $color-white;
+
+  div {
+    border: 1px solid $color-lightgray;
   }
 }
 
@@ -55,7 +71,7 @@ html {
   font-size: 1.8rem;
   margin: 0 auto 1rem;
   row-gap: 1rem;
-  font-family: Tahoma, serif;
+  font-family: $font-family;
   line-height: 1.5;
 }
 
@@ -63,20 +79,29 @@ html {
   width: 22rem;
   font-size: 1.5rem;
   font-weight: bold;
-  border-radius: 15px;
+  border-radius: 1.5rem;
   border-style: none;
-  padding: 8px;
+  padding: 0.8rem;
   cursor: pointer;
   background-color: $color-cadetblue;
-  font-family: Tahoma, serif;
+  font-family: $font-family;
 
   &[disabled] {
     cursor: not-allowed;
   }
 
   &:hover:not([disabled]) {
-    background-color: orange;
-    transition: ease-out 1s;
+    background-color: $color-orange;
+    transition: $transition-ease-out;
+  }
+}
+
+.button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
   }
 }
 
@@ -88,19 +113,79 @@ html {
 
 .buttons-wrapper {
   display: flex;
-  gap: 10px;
-  border-radius: 15px;
+  gap: 1rem;
+  border-radius: 1.5rem;
 }
 
 .game-information-wrapper {
-  padding: 5px;
+  padding: 0.5rem;
   display: flex;
-  border: 5px solid $color-cadetblue;
+  border: 0.5rem solid $color-cadetblue;
   justify-content: space-around;
-  gap: 5px;
+  gap: 0.5rem;
   cursor: default;
+}
+
+.game-information-wrapper-dark {
+  color: white;
+  border: 0.5rem solid $color-white;
 }
 
 .pause {
   display: none;
+}
+
+.theme-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.theme-button {
+  padding: 0.5rem;
+  width: 15rem;
+  font-size: 1.7rem;
+  font-family: $font-family;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: gray;
+    transition: $transition-ease-out;
+  }
+}
+
+.dark-theme-d {
+  background-color: $color-darkgray;
+  color: white;
+
+  &:hover {
+    background-color: gray;
+    transition: $transition-ease-out;
+  }
+}
+
+.light-theme {
+  background-color: $color-wheat;
+
+  &:hover {
+    background-color: $color-burlywood;
+    transition: $transition-ease-out;
+  }
+}
+
+.light-theme-d {
+  background-color: $color-white;
+
+  &:hover {
+    background-color: $color-wheat;
+    transition: $transition-ease-out;
+  }
 }
