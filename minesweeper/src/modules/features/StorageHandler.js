@@ -1,5 +1,6 @@
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {getClickedBarsCounter, setClickedBarsCounter} from "../main-logic/MinesHandler";
+import {getCurrentTheme, setCurrentTheme} from "./ThemeHandler";
 
 export const saveGameState = () => {
     const gameState = {
@@ -9,6 +10,7 @@ export const saveGameState = () => {
         sessionDuration: document.querySelector('.timer-seconds').innerText,
         isGameOver: getIsGameOver(),
         barClickedCounter: getClickedBarsCounter(),
+        themeColor: getCurrentTheme(),
         barClasses: [],
         barInnerText: []
     };
@@ -30,6 +32,7 @@ export const loadGameState = () => {
         document.querySelector('.timer-seconds').innerText = gameState.sessionDuration;
         setIsGameOver(gameState.isGameOver);
         setClickedBarsCounter(gameState.barClickedCounter);
+        setCurrentTheme(gameState.themeColor);
 
         const bars = document.querySelectorAll('.bar');
         bars.forEach((bar, index) => {
