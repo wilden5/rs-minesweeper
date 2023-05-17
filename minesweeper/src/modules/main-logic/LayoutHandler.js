@@ -33,7 +33,13 @@ export const createBasicLayout = () => {
     const GAME_INFORMATION_WRAPPER = createElement('div', ['game-information-wrapper']);
     const GAME_OBJECTS = createElement('div', ['game-objects']);
     const SESSION_INFORMATION = createElement('div', ['session-information']);
+    const GAME_WRAPPER = createElement('div', ['game-wrapper']);
+    const THEME_WRAPPER = createElement('div', ['theme-wrapper']);
+    const DARK_THEME_BUTTON = createElement('button', ['dark-theme', 'theme-button'], 'DARK THEME');
+    const LIGHT_THEME_BUTTON = createElement('button', ['light-theme', 'theme-button'], 'LIGHT THEME');
 
+    THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
+    THEME_WRAPPER.appendChild(LIGHT_THEME_BUTTON);
     GAME_OBJECTS.appendChild(NUMBER_OF_FLAGS_TEXT);
     GAME_OBJECTS.appendChild(TOTAL_BOMBS_ON_GAME_BOARD);
     SESSION_INFORMATION.appendChild(NUMBER_OF_CLICKS_TEXT);
@@ -50,8 +56,11 @@ export const createBasicLayout = () => {
     NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
     GAME_DURATION.appendChild(GAME_TIMER);
 
-    document.body.appendChild(GAME_INFORMATION);
-    document.body.appendChild(GAME_BOARD_ELEMENT);
+    GAME_WRAPPER.appendChild(THEME_WRAPPER);
+    GAME_WRAPPER.appendChild(GAME_INFORMATION);
+    GAME_WRAPPER.appendChild(GAME_BOARD_ELEMENT);
+
+    document.body.appendChild(GAME_WRAPPER);
 }
 
 export const createGameBoard = (setRows, setColumns) => {
