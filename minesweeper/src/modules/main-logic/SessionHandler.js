@@ -2,6 +2,7 @@ import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "./ClickHandler";
 import {initRedFlag} from "./FlagHandler";
 import {playGameStartSound} from "../features/SoundHandler";
+import {initThemeChanger} from "../features/ThemeHandler";
 
 let isGameOver = false;
 export const getIsGameOver = () => {
@@ -19,5 +20,6 @@ export const startGameSession = () => {
         initStopwatch();
         initClickOnBar();
         initRedFlag();
+        initThemeChanger();
     })
 }

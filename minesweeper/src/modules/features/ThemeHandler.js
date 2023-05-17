@@ -1,21 +1,18 @@
 let currentTheme = 'light';
 
-export const initThemeChanger = () => {
-    const DARK_THEME = document.querySelector('.dark-theme');
-    const LIGHT_THEME = document.querySelector('.light-theme');
-
-    LIGHT_THEME.addEventListener('click', () => {
-        currentTheme = 'light';
-        changeTheme(currentTheme);
-    })
-
-    DARK_THEME.addEventListener('click', () => {
-        currentTheme = 'dark';
-        changeTheme(currentTheme);
-    })
+export const getCurrentTheme = () => {
+    return currentTheme;
 }
 
-const changeTheme = (color) => {
+export const setCurrentTheme = (value) => {
+    currentTheme = value;
+}
+
+export const initThemeChanger = () => {
+    changeTheme(currentTheme);
+}
+
+export const changeTheme = (color) => {
     const BODY = document.querySelector('body');
     const GAME_BOARD = document.querySelector('.game-board');
     const GAME_INFORMATION = document.querySelector('.game-information-wrapper');
