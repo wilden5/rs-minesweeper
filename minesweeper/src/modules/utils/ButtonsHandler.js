@@ -7,6 +7,7 @@ import {clearLocalStorage, loadGameState} from "../features/StorageHandler";
 import {setClickedBarsCounter} from "../main-logic/MinesHandler";
 import {initApp} from "../../index";
 import {changeTheme, getCurrentTheme, initThemeChanger, setCurrentTheme} from "../features/ThemeHandler";
+import {addScoreToLayout} from "../main-logic/LayoutHandler";
 
 export const checkButtonsState = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -68,6 +69,7 @@ export const restartCurrentGameButton = () => {
         document.body.innerHTML = '';
         setClickedBarsCounter(0);
         initApp();
+        addScoreToLayout();
     })
 }
 

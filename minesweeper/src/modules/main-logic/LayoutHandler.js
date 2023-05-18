@@ -1,5 +1,5 @@
 import GAME_DIFFICULTIES from '../../data/difficulties.json';
-import {getWinScores} from "../features/ScoreTableHandler";
+import {getUserScores} from "../features/ScoreTableHandler";
 
 let gameBoard = [];
 
@@ -91,8 +91,12 @@ export const initGameLayout = () => {
 
 export const addScoreToLayout = () => {
     const WIN_SCORES = document.querySelector('.win-scores-wrapper');
-    for (const property in getWinScores()) {
-        let element = createElement('div', [`win-score-${property}`, 'win-score'], `GAME ${property}: ${getWinScores()[property]}`);
+    const scores = getUserScores();
+    const lastScores = Object.keys(scores).slice(-10);
+    WIN_SCORES.innerHTML = '';
+
+    for (const property of lastScores) {
+        let element = createElement('div', [`win-score-${property}`, 'win-score'], `GAME ${property}: ${getUserScores()[property]}`);
         WIN_SCORES.appendChild(element);
     }
 }

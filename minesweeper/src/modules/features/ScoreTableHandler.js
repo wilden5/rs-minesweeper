@@ -1,10 +1,14 @@
 import {getIsGameOver} from "../main-logic/SessionHandler";
 import {addScoreToLayout} from "../main-logic/LayoutHandler";
 
-let winScores = {};
+let userScores = {};
 
-export const getWinScores = () => {
-    return winScores;
+export const getUserScores = () => {
+    return userScores;
+}
+
+export const getUserScoresSize = () => {
+    return Object.keys(userScores).length;
 }
 
 export const addScore = (result) => {
@@ -15,7 +19,8 @@ export const addScore = (result) => {
         } else {
             score = `LOSS | Clicks: ${document.querySelector('.clicks-number').innerText} - Duration: ${document.querySelector('.timer-seconds').innerText}s.`;
         }
-        winScores[`${Object.keys(winScores).length + 1}`] = score;
+        userScores[`${Object.keys(userScores).length + 1}`] = score;
     }
     addScoreToLayout();
+    console.log(getUserScoresSize());
 }
