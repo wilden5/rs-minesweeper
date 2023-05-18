@@ -1,4 +1,5 @@
 import GAME_DIFFICULTIES from '../../data/difficulties.json';
+import {getWinScores} from "../features/ScoreTableHandler";
 
 let gameBoard = [];
 
@@ -37,6 +38,9 @@ export const createBasicLayout = () => {
     const THEME_WRAPPER = createElement('div', ['theme-wrapper']);
     const DARK_THEME_BUTTON = createElement('button', ['dark-theme', 'theme-button'], 'DARK THEME');
     const LIGHT_THEME_BUTTON = createElement('button', ['light-theme', 'theme-button'], 'LIGHT THEME');
+    const SCORE_TABLE_WRAPPER = createElement('div', ['score-table']);
+    const SCORE_TABLE_DESCRIPTION = createElement('h4', ['score-table-description'], 'High score table: ');
+    const WIN_SCORES = createElement('div', ['win-scores-wrapper']);
 
     THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
     THEME_WRAPPER.appendChild(LIGHT_THEME_BUTTON);
@@ -55,10 +59,13 @@ export const createBasicLayout = () => {
     NUMBER_OF_CLICKS_TEXT.appendChild(NUMBER_OF_CLICKS);
     NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
     GAME_DURATION.appendChild(GAME_TIMER);
+    SCORE_TABLE_WRAPPER.appendChild(SCORE_TABLE_DESCRIPTION);
+    SCORE_TABLE_WRAPPER.appendChild(WIN_SCORES);
 
     GAME_WRAPPER.appendChild(THEME_WRAPPER);
     GAME_WRAPPER.appendChild(GAME_INFORMATION);
     GAME_WRAPPER.appendChild(GAME_BOARD_ELEMENT);
+    GAME_WRAPPER.appendChild(SCORE_TABLE_WRAPPER);
 
     document.body.appendChild(GAME_WRAPPER);
 }
@@ -81,3 +88,11 @@ export const initGameLayout = () => {
     createBasicLayout();
     createGameBoard(GAME_DIFFICULTIES.easy.rows, GAME_DIFFICULTIES.easy.columns);
 };
+
+export const addWinScoreToLayout = () => {
+    const WIN_SCORES = document.querySelector('.win-scores-wrapper');
+    for (const property in getWinScores()) {
+        let element = createElement('div', [`win-score-${property}`, 'win-score'], `WIN ${property}: ${getWinScores()[property]}`);
+        WIN_SCORES.appendChild(element);
+    }
+}

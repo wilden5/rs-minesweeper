@@ -189,3 +189,25 @@ body {
     transition: $transition-ease-out;
   }
 }
+
+.score-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-table-description {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.win-scores-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.win-score {
+  font-size: 2rem;
+  font-family: $font-family;
+}
