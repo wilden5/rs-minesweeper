@@ -39,7 +39,8 @@ export const createBasicLayout = () => {
     const DARK_THEME_BUTTON = createElement('button', ['dark-theme', 'theme-button'], 'DARK THEME');
     const LIGHT_THEME_BUTTON = createElement('button', ['light-theme', 'theme-button'], 'LIGHT THEME');
     const SCORE_TABLE_WRAPPER = createElement('div', ['score-table']);
-    const SCORE_TABLE_DESCRIPTION = createElement('h4', ['score-table-description'], 'High score table: ');
+    const SCORE_TABLE_HEADER = createElement('h4', ['score-table-header'], 'Recent game results: ');
+    const SCORE_TABLE_DESCRIPTION = createElement('span', ['score-table-description'], '(Real-time automatic updates of the latest game results)');
     const WIN_SCORES = createElement('div', ['win-scores-wrapper']);
 
     THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
@@ -59,6 +60,7 @@ export const createBasicLayout = () => {
     NUMBER_OF_CLICKS_TEXT.appendChild(NUMBER_OF_CLICKS);
     NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
     GAME_DURATION.appendChild(GAME_TIMER);
+    SCORE_TABLE_WRAPPER.appendChild(SCORE_TABLE_HEADER);
     SCORE_TABLE_WRAPPER.appendChild(SCORE_TABLE_DESCRIPTION);
     SCORE_TABLE_WRAPPER.appendChild(WIN_SCORES);
 

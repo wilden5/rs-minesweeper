@@ -196,10 +196,14 @@ body {
   align-items: center;
 }
 
-.score-table-description {
+.score-table-header {
   font-size: 3rem;
   margin-top: 1rem;
   margin-bottom: 0;
+}
+
+.score-table-description {
+  font-size: 1.2rem;
 }
 
 .win-scores-wrapper {
