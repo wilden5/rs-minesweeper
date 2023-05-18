@@ -89,10 +89,10 @@ export const initGameLayout = () => {
     createGameBoard(GAME_DIFFICULTIES.easy.rows, GAME_DIFFICULTIES.easy.columns);
 };
 
-export const addWinScoreToLayout = () => {
+export const addScoreToLayout = () => {
     const WIN_SCORES = document.querySelector('.win-scores-wrapper');
     for (const property in getWinScores()) {
-        let element = createElement('div', [`win-score-${property}`, 'win-score'], `WIN ${property}: ${getWinScores()[property]}`);
+        let element = createElement('div', [`win-score-${property}`, 'win-score'], `GAME ${property}: ${getWinScores()[property]}`);
         WIN_SCORES.appendChild(element);
     }
 }

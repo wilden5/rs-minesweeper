@@ -2,6 +2,7 @@ import {stopStopwatch} from "../features/StopwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./SessionHandler";
 import {checkMines, getGameBoardMinesLocation, showMinesLocation} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
+import {addScore} from "../features/ScoreTableHandler";
 
 let clickCounter;
 
@@ -28,6 +29,7 @@ export const initClickOnBar = () => {
             if (getGameBoardMinesLocation().includes(bar.classList[0])) {
                 if (getIsGameOver() !== true) {
                     setIsGameOver(true);
+                    addScore('loss');
                     showMinesLocation();
                     stopStopwatch();
                     playGameOverSound();

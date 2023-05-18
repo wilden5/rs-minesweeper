@@ -4,7 +4,7 @@ import {setIsGameOver} from "./SessionHandler";
 import {getStopwatchValue, stopStopwatch} from "../features/StopwatchHandler";
 import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";
-import {addWinScore} from "../features/ScoreTableHandler";
+import {addScore} from "../features/ScoreTableHandler";
 
 const gameBoardMinesLocation = [];
 let clickedBarsCounter = 0;
@@ -102,7 +102,7 @@ export const checkMines = (row, column) => {
 
     if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - 5) {
         setIsGameOver(true);
-        addWinScore();
+        addScore('win');
         showMinesLocation();
         stopStopwatch();
         playGameWinSound();
