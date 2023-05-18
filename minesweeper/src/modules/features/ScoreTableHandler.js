@@ -7,6 +7,10 @@ export const getUserScores = () => {
     return userScores;
 }
 
+export const setUserScores = (object) => {
+    userScores = { ...userScores, ...object };
+}
+
 export const getUserScoresSize = () => {
     return Object.keys(userScores).length;
 }

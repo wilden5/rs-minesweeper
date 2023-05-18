@@ -3,7 +3,7 @@ import {playGameStartSound} from "../features/SoundHandler";
 import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "../main-logic/ClickHandler";
 import {initRedFlag} from "../main-logic/FlagHandler";
-import {clearLocalStorage, loadGameState} from "../features/StorageHandler";
+import {clearLocalStorage, loadGameResults, loadGameState} from "../features/StorageHandler";
 import {setClickedBarsCounter} from "../main-logic/MinesHandler";
 import {initApp} from "../../index";
 import {changeTheme, getCurrentTheme, initThemeChanger, setCurrentTheme} from "../features/ThemeHandler";
@@ -51,6 +51,8 @@ export const continueYourGameButton = () => {
         GAME_BOARD_ELEMENT.classList.remove('pause');
         DARK_THEME.classList.remove('pause');
         LIGHT_THEME.classList.remove('pause');
+        loadGameResults();
+        addScoreToLayout();
         loadGameState();
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
         playGameStartSound();
@@ -69,6 +71,7 @@ export const restartCurrentGameButton = () => {
         document.body.innerHTML = '';
         setClickedBarsCounter(0);
         initApp();
+        loadGameResults();
         addScoreToLayout();
     })
 }

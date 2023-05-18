@@ -1,6 +1,7 @@
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {getClickedBarsCounter, setClickedBarsCounter} from "../main-logic/MinesHandler";
 import {getCurrentTheme, setCurrentTheme} from "./ThemeHandler";
+import {getUserScores, setUserScores} from "./ScoreTableHandler";
 
 export const saveGameState = () => {
     const gameState = {
@@ -45,5 +46,16 @@ export const loadGameState = () => {
 }
 
 export const clearLocalStorage = () => {
-    localStorage.clear();
+    localStorage.removeItem('minesweeperGameState');
+}
+
+export const saveGameResults = () => {
+    localStorage.setItem('minesweeperGameResults', JSON.stringify(getUserScores()));
+}
+
+export const loadGameResults = () => {
+    const results = JSON.parse(localStorage.getItem('minesweeperGameResults'));
+    if (results) {
+        setUserScores(results);
+    }
 }
