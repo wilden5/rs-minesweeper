@@ -19,6 +19,7 @@ export const changeTheme = (color) => {
     const SESSION_BUTTONS = document.querySelectorAll('.button');
     const DARK_THEME_BUTTON = document.querySelector('.dark-theme');
     const LIGHT_THEME_BUTTON = document.querySelector('.light-theme');
+    const SCORE_TABLE = document.querySelector('.score-table');
 
     if (color === 'dark') {
         BODY.classList.add('body-dark');
@@ -26,6 +27,7 @@ export const changeTheme = (color) => {
         GAME_INFORMATION.classList.add('game-information-wrapper-dark');
         DARK_THEME_BUTTON.classList.add('dark-theme-d');
         LIGHT_THEME_BUTTON.classList.add('light-theme-d');
+        SCORE_TABLE.classList.add('score-table-dark');
 
         SESSION_BUTTONS.forEach(button => {
             button.classList.add('button-dark');
@@ -36,6 +38,7 @@ export const changeTheme = (color) => {
         GAME_INFORMATION.classList.remove('game-information-wrapper-dark');
         DARK_THEME_BUTTON.classList.remove('dark-theme-d');
         LIGHT_THEME_BUTTON.classList.remove('light-theme-d');
+        SCORE_TABLE.classList.remove('score-table-dark');
 
         SESSION_BUTTONS.forEach(button => {
             button.classList.remove('button-dark');

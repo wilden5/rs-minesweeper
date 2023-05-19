@@ -16,6 +16,7 @@ export const checkButtonsState = () => {
     const GAME_BOARD_ELEMENT = document.querySelector('.game-board');
     const DARK_THEME = document.querySelector('.dark-theme');
     const LIGHT_THEME = document.querySelector('.light-theme');
+    const SCORE_TABLE_HEADER = document.querySelector('.score-table-header');
 
     if (localStorage.getItem('minesweeperGameState') === null) {
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
@@ -31,6 +32,7 @@ export const checkButtonsState = () => {
         GAME_BOARD_ELEMENT.classList.add('pause');
         DARK_THEME.classList.add('pause');
         LIGHT_THEME.classList.add('pause');
+        SCORE_TABLE_HEADER.classList.add('pause');
         START_GAME_BUTTON.disabled = true;
 
         if (JSON.parse(localStorage.getItem('minesweeperGameState')).isGameOver === true) {
@@ -45,6 +47,7 @@ export const continueYourGameButton = () => {
     const GAME_BOARD_ELEMENT = document.querySelector('.game-board');
     const DARK_THEME = document.querySelector('.dark-theme');
     const LIGHT_THEME = document.querySelector('.light-theme');
+    const SCORE_TABLE_HEADER = document.querySelector('.score-table-header');
 
     CONTINUE_YOUR_SESSION_BUTTON.addEventListener('click', () => {
         GAME_INFORMATION_WRAPPER.classList.remove('pause');
@@ -53,6 +56,7 @@ export const continueYourGameButton = () => {
         LIGHT_THEME.classList.remove('pause');
         loadGameResults();
         addScoreToLayout();
+        SCORE_TABLE_HEADER.classList.remove('pause');
         loadGameState();
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
         playGameStartSound();
