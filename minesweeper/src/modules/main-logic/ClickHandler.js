@@ -1,6 +1,6 @@
 import {stopStopwatch} from "../features/StopwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./SessionHandler";
-import {checkMines, getGameBoardMinesLocation, showMinesLocation} from "./MinesHandler";
+import {checkMines, getGameBoardMinesLocation, showMinesLocation, swapMine} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
 import {addScore} from "../features/ScoreTableHandler";
 
@@ -27,13 +27,24 @@ export const initClickOnBar = () => {
             }
             console.log(bar.classList);
             if (getGameBoardMinesLocation().includes(bar.classList[0])) {
-                if (getIsGameOver() !== true) {
-                    setIsGameOver(true);
-                    addScore('loss');
-                    showMinesLocation();
-                    stopStopwatch();
-                    playGameOverSound();
-                    alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
+                let clickedBars = document.querySelector('.clicks-number').innerText;
+                console.log(clickedBars);
+                if (parseInt(clickedBars) === 1) {
+                    playOpenBarSound();
+                    swapMine(bar.classList[0]);
+                    let coordinates = bar.classList[0].split('-');
+                    let barRowCoordinates = parseInt(coordinates[0]);
+                    let barColumnCoordinates = parseInt(coordinates[1]);
+                    checkMines(barRowCoordinates, barColumnCoordinates);
+                } else {
+                    if (getIsGameOver() !== true) {
+                        setIsGameOver(true);
+                        addScore('loss');
+                        showMinesLocation();
+                        stopStopwatch();
+                        playGameOverSound();
+                        alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
+                    }
                 }
             } else {
                 if (getIsGameOver() !== true) {

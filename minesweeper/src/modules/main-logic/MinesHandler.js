@@ -17,19 +17,46 @@ export const setClickedBarsCounter = (value) => {
     clickedBarsCounter = value;
 }
 
+export const swapMine = (mineToSwap) => {
+    const index = gameBoardMinesLocation.indexOf(mineToSwap);
+    if (index !== -1) {
+        gameBoardMinesLocation.splice(index, 1);
+    }
+    console.log(getGameBoardMinesLocation() + 'do')
+    console.log(gameBoardMinesLocation.length);
+    generateRandomMines();
+    console.log(getGameBoardMinesLocation() + 'posle')
+    console.log(gameBoardMinesLocation.length);
+}
+
 export const generateRandomMines = () => {
-    if(gameBoardMinesLocation.length > 0) {
+    let minesNumber = GAME_DIFFICULTIES.easy.bombs;
+    if(gameBoardMinesLocation.length > 0 && gameBoardMinesLocation.length !== GAME_DIFFICULTIES.easy.bombs - 1) {
         gameBoardMinesLocation = [];
     }
-    let minesNumber = GAME_DIFFICULTIES.easy.bombs;
-    while (minesNumber > 0) {
-        let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
-        let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
-        let bombId = `${r.toString()}-${c.toString()}`;
 
-        if (!gameBoardMinesLocation.includes(bombId)) {
-            gameBoardMinesLocation.push(bombId);
-            minesNumber -= 1;
+    if (gameBoardMinesLocation.length === GAME_DIFFICULTIES.easy.bombs - 1) {
+        minesNumber = gameBoardMinesLocation.length;
+        while (minesNumber !== 10) {
+            let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
+            let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
+            let bombId = `${r.toString()}-${c.toString()}`;
+
+            if (!gameBoardMinesLocation.includes(bombId)) {
+                gameBoardMinesLocation.push(bombId);
+                minesNumber += 1;
+            }
+        }
+    } else {
+        while (minesNumber > 0) {
+            let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
+            let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
+            let bombId = `${r.toString()}-${c.toString()}`;
+
+            if (!gameBoardMinesLocation.includes(bombId)) {
+                gameBoardMinesLocation.push(bombId);
+                minesNumber -= 1;
+            }
         }
     }
     console.log(gameBoardMinesLocation.length);
