@@ -3,6 +3,7 @@ import {initClickOnBar} from "./ClickHandler";
 import {initRedFlag} from "./FlagHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 import {initThemeChanger} from "../features/ThemeHandler";
+import {generateRandomMines} from "./MinesHandler";
 
 let isGameOver = false;
 export const getIsGameOver = () => {
@@ -21,5 +22,6 @@ export const startGameSession = () => {
         initClickOnBar();
         initRedFlag();
         initThemeChanger();
+        generateRandomMines();
     })
 }

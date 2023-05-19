@@ -1,5 +1,10 @@
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
-import {getClickedBarsCounter, setClickedBarsCounter} from "../main-logic/MinesHandler";
+import {
+    getClickedBarsCounter,
+    getGameBoardMinesLocation,
+    setClickedBarsCounter,
+    setGameBoardMinesLocation
+} from "../main-logic/MinesHandler";
 import {getCurrentTheme, setCurrentTheme} from "./ThemeHandler";
 import {getUserScores, setUserScores} from "./ScoreTableHandler";
 
@@ -12,6 +17,7 @@ export const saveGameState = () => {
         isGameOver: getIsGameOver(),
         barClickedCounter: getClickedBarsCounter(),
         themeColor: getCurrentTheme(),
+        minesLocation: [],
         barClasses: [],
         barInnerText: []
     };
@@ -20,6 +26,7 @@ export const saveGameState = () => {
         gameState.barClasses.push(Array.from(bar.classList));
         gameState.barInnerText.push(Array.from(bar.innerText));
     });
+    gameState.minesLocation = getGameBoardMinesLocation();
     localStorage.setItem('minesweeperGameState', JSON.stringify(gameState));
 }
 
@@ -34,6 +41,7 @@ export const loadGameState = () => {
         setIsGameOver(gameState.isGameOver);
         setClickedBarsCounter(gameState.barClickedCounter);
         setCurrentTheme(gameState.themeColor);
+        setGameBoardMinesLocation(gameState.minesLocation);
 
         const bars = document.querySelectorAll('.bar');
         bars.forEach((bar, index) => {

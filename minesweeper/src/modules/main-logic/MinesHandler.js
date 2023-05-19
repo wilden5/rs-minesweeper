@@ -6,7 +6,7 @@ import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";
 import {addScore} from "../features/ScoreTableHandler";
 
-const gameBoardMinesLocation = [];
+let gameBoardMinesLocation = [];
 let clickedBarsCounter = 0;
 
 export const getClickedBarsCounter = () => {
@@ -17,14 +17,10 @@ export const setClickedBarsCounter = (value) => {
     clickedBarsCounter = value;
 }
 
-
-gameBoardMinesLocation.push('1-1');
-gameBoardMinesLocation.push('2-2');
-gameBoardMinesLocation.push('3-3');
-gameBoardMinesLocation.push('4-4');
-gameBoardMinesLocation.push('5-5');
-
-export const generateRandomMines = () => { // dont forget to use it
+export const generateRandomMines = () => {
+    if(gameBoardMinesLocation.length > 0) {
+        gameBoardMinesLocation = [];
+    }
     let minesNumber = GAME_DIFFICULTIES.easy.bombs;
     while (minesNumber > 0) {
         let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
@@ -41,6 +37,12 @@ export const generateRandomMines = () => { // dont forget to use it
 
 export const getGameBoardMinesLocation = () => {
     return gameBoardMinesLocation;
+}
+
+export const setGameBoardMinesLocation = (array) => {
+    array.forEach((bomb) => {
+        gameBoardMinesLocation.push(bomb);
+    })
 }
 
 export const showMinesLocation = () => {
@@ -100,7 +102,7 @@ export const checkMines = (row, column) => {
         checkMines(row + 1, column + 1);
     }
 
-    if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - 5) {
+    if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - 10) {
         setIsGameOver(true);
         addScore('win');
         showMinesLocation();
