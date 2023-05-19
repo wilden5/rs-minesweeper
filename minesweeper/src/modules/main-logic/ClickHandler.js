@@ -1,6 +1,6 @@
 import {stopStopwatch} from "../features/StopwatchHandler";
 import {getIsGameOver, setIsGameOver} from "./SessionHandler";
-import {checkMines, getGameBoardMinesLocation, showMinesLocation, swapMine} from "./MinesHandler";
+import {checkNearestBars, getGameBoardMinesLocation, showMinesLocation, swapMine} from "./MinesHandler";
 import {playGameOverSound, playOpenBarSound} from "../features/SoundHandler";
 import {addScore} from "../features/ScoreTableHandler";
 
@@ -32,10 +32,7 @@ export const initClickOnBar = () => {
                 if (parseInt(clickedBars) === 1) {
                     playOpenBarSound();
                     swapMine(bar.classList[0]);
-                    let coordinates = bar.classList[0].split('-');
-                    let barRowCoordinates = parseInt(coordinates[0]);
-                    let barColumnCoordinates = parseInt(coordinates[1]);
-                    checkMines(barRowCoordinates, barColumnCoordinates);
+                    checkNearestBars(bar);
                 } else {
                     if (getIsGameOver() !== true) {
                         setIsGameOver(true);
@@ -51,10 +48,7 @@ export const initClickOnBar = () => {
                     if(!bar.classList.contains('bar-clicked')) {
                         playOpenBarSound();
                     }
-                    let coordinates = bar.classList[0].split('-');
-                    let barRowCoordinates = parseInt(coordinates[0]);
-                    let barColumnCoordinates = parseInt(coordinates[1]);
-                    checkMines(barRowCoordinates, barColumnCoordinates);
+                    checkNearestBars(bar);
                 }
             }
         })

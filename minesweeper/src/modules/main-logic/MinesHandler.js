@@ -150,3 +150,10 @@ const checkBar = (row, column) => {
     }
     return 0;
 }
+
+export const checkNearestBars = (bar) => {
+    let coordinates = bar.classList[0].split('-');
+    let barRowCoordinates = parseInt(coordinates[0]);
+    let barColumnCoordinates = parseInt(coordinates[1]);
+    checkMines(barRowCoordinates, barColumnCoordinates);
+}
