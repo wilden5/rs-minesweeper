@@ -42,6 +42,18 @@ export const createBasicLayout = () => {
     const SCORE_TABLE_HEADER = createElement('h4', ['score-table-header'], 'Recent game results: ');
     const SCORE_TABLE_DESCRIPTION = createElement('span', ['score-table-description'], '(Real-time automatic updates of the latest game results)');
     const WIN_SCORES = createElement('div', ['win-scores-wrapper']);
+    const MINES_SETTINGS_WRAPPER = createElement('div',['mines-settings-wrapper']);
+    const MINES_SETTINGS_BUTTON = createElement('button', ['mines-settings-button'], 'SAVE');
+
+    const createMinesSettingsInput = () => {
+        const MINES_SETTINGS_INPUT = createElement('input', ['mines-settings-input']);
+        MINES_SETTINGS_INPUT.setAttribute('type', 'number');
+        MINES_SETTINGS_INPUT.setAttribute('placeholder', 'Enter the number of mines 10 - 99');
+        return MINES_SETTINGS_INPUT;
+    }
+
+    MINES_SETTINGS_WRAPPER.appendChild(createMinesSettingsInput());
+    MINES_SETTINGS_WRAPPER.appendChild(MINES_SETTINGS_BUTTON);
 
     THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
     THEME_WRAPPER.appendChild(LIGHT_THEME_BUTTON);
@@ -56,6 +68,7 @@ export const createBasicLayout = () => {
     BUTTONS_WRAPPER.appendChild(GAME_RESTART_BUTTON);
     BUTTONS_WRAPPER.appendChild(START_GAME_BUTTON);
     BUTTONS_WRAPPER.appendChild(CONTINUE_GAME_BUTTON);
+
     TOTAL_BOMBS_ON_GAME_BOARD.appendChild(BOMBS_REMAINED);
     NUMBER_OF_CLICKS_TEXT.appendChild(NUMBER_OF_CLICKS);
     NUMBER_OF_FLAGS_TEXT.appendChild(NUMBER_OF_FLAGS);
@@ -63,7 +76,7 @@ export const createBasicLayout = () => {
     SCORE_TABLE_WRAPPER.appendChild(SCORE_TABLE_HEADER);
     SCORE_TABLE_WRAPPER.appendChild(SCORE_TABLE_DESCRIPTION);
     SCORE_TABLE_WRAPPER.appendChild(WIN_SCORES);
-
+    GAME_INFORMATION.appendChild(MINES_SETTINGS_WRAPPER);
     GAME_WRAPPER.appendChild(THEME_WRAPPER);
     GAME_WRAPPER.appendChild(GAME_INFORMATION);
     GAME_WRAPPER.appendChild(GAME_BOARD_ELEMENT);
