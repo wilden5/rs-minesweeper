@@ -1,5 +1,6 @@
 import GAME_DIFFICULTIES from '../../data/difficulties.json';
 import {getUserScores} from "../features/ScoreTableHandler";
+import {getNumberOfUserMines} from "../features/GameSettingsHandler";
 
 let gameBoard = [];
 
@@ -21,7 +22,7 @@ export const createBasicLayout = () => {
     const NUMBER_OF_FLAGS_TEXT = createElement('div', ['red-flags-information'], 'Number of 🚩 used: ');
     const NUMBER_OF_FLAGS = createElement('span', ['red-flags-number'], '0');
     const TOTAL_BOMBS_ON_GAME_BOARD = createElement('div', ['bombs-number'], 'Number of 💣 remaining: ');
-    const BOMBS_REMAINED = createElement('span', ['bombs-remained'], GAME_DIFFICULTIES.easy.bombs.toString());
+    const BOMBS_REMAINED = createElement('span', ['bombs-remained'], getNumberOfUserMines());
     const NUMBER_OF_CLICKS_TEXT = createElement('div', ['clicks-number-information'], 'Number of clicks: ');
     const NUMBER_OF_CLICKS = createElement('span', ['clicks-number'], '0');
     const GAME_RESTART_BUTTON = createElement('button', ['restart-button', 'button'], 'RESTART CURRENT GAME');

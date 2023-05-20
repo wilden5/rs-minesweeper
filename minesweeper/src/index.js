@@ -7,7 +7,6 @@ import {initButtons} from "./modules/utils/ButtonsHandler";
 import {loadGameResults, saveGameResults, saveGameState} from "./modules/features/StorageHandler";
 import {getClickCounter} from "./modules/main-logic/ClickHandler";
 import {getStopwatchValue} from "./modules/features/StopwatchHandler";
-import {validateMinesInput} from "./modules/features/GameSettingsHandler";
 
 export const initApp = () => {
     initGameLayout();
@@ -15,7 +14,6 @@ export const initApp = () => {
     initButtons();
     loadGameResults();
     addScoreToLayout();
-    validateMinesInput();
 }
 
 initApp();

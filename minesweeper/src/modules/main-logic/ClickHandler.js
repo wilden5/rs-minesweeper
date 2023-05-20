@@ -40,6 +40,7 @@ export const initClickOnBar = () => {
                         showMinesLocation();
                         stopStopwatch();
                         playGameOverSound();
+                        document.querySelector('.restart-button').disabled = false;
                         alert('BRO YOU\'VE JUST CLICKED ON THE BOMB. GAME OVER. TRY AGAIN.');
                     }
                 }

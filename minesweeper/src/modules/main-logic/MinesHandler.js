@@ -5,9 +5,14 @@ import {getStopwatchValue, stopStopwatch} from "../features/StopwatchHandler";
 import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";
 import {addScore} from "../features/ScoreTableHandler";
+import {getNumberOfUserMines} from "../features/GameSettingsHandler";
 
 let gameBoardMinesLocation = [];
 let clickedBarsCounter = 0;
+
+export const clearGameBoardMinesLocation = () => {
+    gameBoardMinesLocation = [];
+}
 
 export const getClickedBarsCounter = () => {
     return clickedBarsCounter;
@@ -22,33 +27,26 @@ export const swapMine = (mineToSwap) => {
     if (index !== -1) {
         gameBoardMinesLocation.splice(index, 1);
     }
-    console.log(getGameBoardMinesLocation() + 'do')
-    console.log(gameBoardMinesLocation.length);
     generateRandomMines();
-    console.log(getGameBoardMinesLocation() + 'posle')
-    console.log(gameBoardMinesLocation.length);
 }
 
 export const generateRandomMines = () => {
-    let minesNumber = GAME_DIFFICULTIES.easy.bombs;
-    if(gameBoardMinesLocation.length > 0 && gameBoardMinesLocation.length !== GAME_DIFFICULTIES.easy.bombs - 1) {
-        gameBoardMinesLocation = [];
-    }
-
-    if (gameBoardMinesLocation.length === GAME_DIFFICULTIES.easy.bombs - 1) {
-        minesNumber = gameBoardMinesLocation.length;
-        while (minesNumber !== 10) {
+    let minesNumber = gameBoardMinesLocation.length + 1;
+    if (gameBoardMinesLocation.length === (minesNumber - 1)) {
+        let minesNumber2 = gameBoardMinesLocation.length;
+        while (minesNumber2 !== parseInt(getNumberOfUserMines())) {
             let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
             let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
             let bombId = `${r.toString()}-${c.toString()}`;
 
             if (!gameBoardMinesLocation.includes(bombId)) {
                 gameBoardMinesLocation.push(bombId);
-                minesNumber += 1;
+                minesNumber2 += 1;
             }
         }
     } else {
         while (minesNumber > 0) {
+            console.log('зашло в елс')
             let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
             let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
             let bombId = `${r.toString()}-${c.toString()}`;
@@ -59,7 +57,6 @@ export const generateRandomMines = () => {
             }
         }
     }
-    console.log(gameBoardMinesLocation.length);
 }
 
 export const getGameBoardMinesLocation = () => {
