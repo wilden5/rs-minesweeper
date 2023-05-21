@@ -71,14 +71,14 @@ const removeRedFlagForOpenedBars = () => {
 
         if (bar.classList.contains('nb')) {
             bar.classList.remove('red-flag');
-            let a = '';
+            let nearestBombsNumber = '';
             let barClassList = bar.getAttribute('class').split(' ');
             barClassList.forEach((item) => {
                 if (item.includes('nearby-bombs')) {
-                    a = item.slice(-1);
+                    nearestBombsNumber = item.slice(-1);
                 }
             })
-            bar.innerText = a;
+            bar.innerText = nearestBombsNumber;
         }
     })
     RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) - counter;
