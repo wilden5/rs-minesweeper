@@ -50,8 +50,37 @@ export const initClickOnBar = () => {
                         playOpenBarSound();
                     }
                     checkNearestBars(bar);
+                    removeRedFlagForOpenedBars();
                 }
             }
         })
     })
+}
+
+const removeRedFlagForOpenedBars = () => {
+    const BOARD_BARS = document.querySelectorAll('.bar');
+    const RED_FLAGS_NUMBER = document.querySelector('.red-flags-number');
+    const BOMBS_REMAINED = document.querySelector('.bombs-remained');
+    let counter = 0;
+    BOARD_BARS.forEach((bar) => {
+        if (bar.classList.contains('bar-clicked') && bar.classList.contains('red-flag')) {
+            bar.classList.remove('red-flag');
+            bar.innerText = '';
+            counter++;
+        }
+
+        if (bar.classList.contains('nb')) {
+            bar.classList.remove('red-flag');
+            let a = '';
+            let barClassList = bar.getAttribute('class').split(' ');
+            barClassList.forEach((item) => {
+                if (item.includes('nearby-bombs')) {
+                    a = item.slice(-1);
+                }
+            })
+            bar.innerText = a;
+        }
+    })
+    RED_FLAGS_NUMBER.innerText = parseInt(RED_FLAGS_NUMBER.innerText) - counter;
+    BOMBS_REMAINED.innerText = parseInt(BOMBS_REMAINED.innerText) + counter;
 }
