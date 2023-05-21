@@ -45,6 +45,10 @@ export const createBasicLayout = () => {
     const WIN_SCORES = createElement('div', ['win-scores-wrapper']);
     const MINES_SETTINGS_WRAPPER = createElement('div',['mines-settings-wrapper']);
     const MINES_SETTINGS_BUTTON = createElement('button', ['mines-settings-button'], 'SAVE');
+    const FIELD_BUTTONS_WRAPPER = createElement('div', ['field-buttons-wrapper']);
+    const EASY_FIELD_BUTTON = createElement('button', ['easy-field-button', 'field-button'], '10x10');
+    const MEDIUM_FIELD_BUTTON = createElement('button', ['medium-field-button', 'field-button'], '15x15');
+    const HARD_FIELD_BUTTON = createElement('button', ['hard-field-button', 'field-button'], '25x25');
 
     const createMinesSettingsInput = () => {
         const MINES_SETTINGS_INPUT = createElement('input', ['mines-settings-input']);
@@ -55,6 +59,10 @@ export const createBasicLayout = () => {
 
     MINES_SETTINGS_WRAPPER.appendChild(createMinesSettingsInput());
     MINES_SETTINGS_WRAPPER.appendChild(MINES_SETTINGS_BUTTON);
+
+    FIELD_BUTTONS_WRAPPER.appendChild(EASY_FIELD_BUTTON);
+    FIELD_BUTTONS_WRAPPER.appendChild(MEDIUM_FIELD_BUTTON);
+    FIELD_BUTTONS_WRAPPER.appendChild(HARD_FIELD_BUTTON);
 
     THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
     THEME_WRAPPER.appendChild(LIGHT_THEME_BUTTON);
@@ -79,6 +87,7 @@ export const createBasicLayout = () => {
     SCORE_TABLE_WRAPPER.appendChild(WIN_SCORES);
     GAME_INFORMATION.appendChild(MINES_SETTINGS_WRAPPER);
     GAME_WRAPPER.appendChild(THEME_WRAPPER);
+    GAME_WRAPPER.appendChild(FIELD_BUTTONS_WRAPPER);
     GAME_WRAPPER.appendChild(GAME_INFORMATION);
     GAME_WRAPPER.appendChild(GAME_BOARD_ELEMENT);
     GAME_WRAPPER.appendChild(SCORE_TABLE_WRAPPER);

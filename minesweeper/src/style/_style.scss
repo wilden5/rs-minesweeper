@@ -221,7 +221,8 @@ body {
   font-family: $font-family;
 }
 
-.mines-settings-wrapper {
+.mines-settings-wrapper,
+.field-buttons-wrapper {
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -229,12 +230,12 @@ body {
 
 .mines-settings-button {
   background-color: $color-cadetblue;
-  width: 10rem;
+  width: 8rem;
   font-size: 1.7rem;
   cursor: pointer;
   border: none;
   font-weight: bold;
-  border-radius: 1rem;
+  border-radius: 2rem;
   padding: 0.3rem;
 
   &:hover:not([disabled]) {
@@ -262,5 +263,30 @@ body {
   ::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+  }
+}
+
+.field-buttons-wrapper {
+  margin-bottom: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.field-button {
+  background-color: $color-orange;
+  width: 7rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  border-radius: 2rem;
+  padding: 0.3rem;
+
+  &:hover:not([disabled]) {
+    background-color: $color-red;
+    transition: $transition-ease-out;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
   }
 }

@@ -23,6 +23,9 @@ export const checkButtonsState = () => {
     const RESTART_BUTTON = document.querySelector('.restart-button');
     const MINES_SETTINGS_BUTTON = document.querySelector('.mines-settings-button');
     const MINES_SETTINGS_INPUT = document.querySelector('.mines-settings-input');
+    const EASY_FIELD_BUTTON = document.querySelector('.easy-field-button');
+    const MEDIUM_FIELD_BUTTON = document.querySelector('.medium-field-button');
+    const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
 
     if (localStorage.getItem('minesweeperGameState') === null) {
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
@@ -42,6 +45,9 @@ export const checkButtonsState = () => {
         LIGHT_THEME.classList.add('pause');
         MINES_SETTINGS_BUTTON.classList.add('pause');
         MINES_SETTINGS_INPUT.classList.add('pause');
+        EASY_FIELD_BUTTON.classList.add('pause');
+        MEDIUM_FIELD_BUTTON.classList.add('pause');
+        HARD_FIELD_BUTTON.classList.add('pause');
         START_GAME_BUTTON.disabled = true;
 
         if (JSON.parse(localStorage.getItem('minesweeperGameState')).isGameOver === true) {
@@ -58,6 +64,9 @@ export const continueYourGameButton = () => {
     const LIGHT_THEME = document.querySelector('.light-theme');
     const MINES_SETTINGS_BUTTON = document.querySelector('.mines-settings-button');
     const MINES_SETTINGS_INPUT = document.querySelector('.mines-settings-input');
+    const EASY_FIELD_BUTTON = document.querySelector('.easy-field-button');
+    const MEDIUM_FIELD_BUTTON = document.querySelector('.medium-field-button');
+    const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
 
     CONTINUE_YOUR_SESSION_BUTTON.addEventListener('click', () => {
         GAME_INFORMATION_WRAPPER.classList.remove('pause');
@@ -66,12 +75,18 @@ export const continueYourGameButton = () => {
         LIGHT_THEME.classList.remove('pause');
         MINES_SETTINGS_BUTTON.classList.remove('pause');
         MINES_SETTINGS_INPUT.classList.remove('pause');
+        EASY_FIELD_BUTTON.classList.remove('pause');
+        MEDIUM_FIELD_BUTTON.classList.remove('pause');
+        HARD_FIELD_BUTTON.classList.remove('pause');
         loadGameResults();
         addScoreToLayout();
         loadGameState();
         MINES_SETTINGS_BUTTON.disabled = true;
         MINES_SETTINGS_INPUT.disabled = true;
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
+        EASY_FIELD_BUTTON.disabled = true;
+        MEDIUM_FIELD_BUTTON.disabled = true;
+        HARD_FIELD_BUTTON.disabled = true;
         playGameStartSound();
         initStopwatch();
         initClickOnBar();
