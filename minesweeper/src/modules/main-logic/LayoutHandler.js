@@ -1,6 +1,5 @@
-import GAME_DIFFICULTIES from '../../data/difficulties.json';
 import {getUserScores} from "../features/ScoreTableHandler";
-import {getNumberOfUserMines} from "../features/GameSettingsHandler";
+import {getNumberOfUserMines, getUserBoardSizeColumns, getUserBoardSizeRows} from "../features/GameSettingsHandler";
 
 let gameBoard = [];
 
@@ -111,7 +110,7 @@ export const createGameBoard = (setRows, setColumns) => {
 
 export const initGameLayout = () => {
     createBasicLayout();
-    createGameBoard(GAME_DIFFICULTIES.easy.rows, GAME_DIFFICULTIES.easy.columns);
+    createGameBoard(getUserBoardSizeRows(), getUserBoardSizeColumns());
 };
 
 export const addScoreToLayout = () => {

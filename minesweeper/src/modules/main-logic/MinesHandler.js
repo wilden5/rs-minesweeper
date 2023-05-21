@@ -1,11 +1,10 @@
-import GAME_DIFFICULTIES from "../../data/difficulties.json";
 import {getGameBoard} from "./LayoutHandler";
 import {setIsGameOver} from "./SessionHandler";
 import {getStopwatchValue, stopStopwatch} from "../features/StopwatchHandler";
 import {getClickCounter} from "./ClickHandler";
 import {playGameWinSound} from "../features/SoundHandler";
 import {addScore} from "../features/ScoreTableHandler";
-import {getNumberOfUserMines} from "../features/GameSettingsHandler";
+import {getNumberOfUserMines, getUserBoardSizeColumns, getUserBoardSizeRows} from "../features/GameSettingsHandler";
 
 let gameBoardMinesLocation = [];
 let clickedBarsCounter = 0;
@@ -35,8 +34,8 @@ export const generateRandomMines = () => {
     if (gameBoardMinesLocation.length === (minesNumber - 1)) {
         let minesNumber2 = gameBoardMinesLocation.length;
         while (minesNumber2 !== parseInt(getNumberOfUserMines())) {
-            let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
-            let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
+            let r = Math.floor(Math.random() * getUserBoardSizeRows());
+            let c = Math.floor(Math.random() * getUserBoardSizeColumns());
             let bombId = `${r.toString()}-${c.toString()}`;
 
             if (!gameBoardMinesLocation.includes(bombId)) {
@@ -47,8 +46,8 @@ export const generateRandomMines = () => {
     } else {
         while (minesNumber > 0) {
             console.log('зашло в елс')
-            let r = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.rows);
-            let c = Math.floor(Math.random() * GAME_DIFFICULTIES.easy.columns);
+            let r = Math.floor(Math.random() * getUserBoardSizeRows());
+            let c = Math.floor(Math.random() * getUserBoardSizeColumns());
             let bombId = `${r.toString()}-${c.toString()}`;
 
             if (!gameBoardMinesLocation.includes(bombId)) {
@@ -85,8 +84,8 @@ export const showMinesLocation = () => {
 }
 
 export const checkMines = (row, column) => {
-    if (row < 0 || row >= GAME_DIFFICULTIES.easy.rows ||
-        column < 0 || column >= GAME_DIFFICULTIES.easy.columns) {
+    if (row < 0 || row >= getUserBoardSizeRows() ||
+        column < 0 || column >= getUserBoardSizeColumns()) {
         return;
     }
 
@@ -126,7 +125,7 @@ export const checkMines = (row, column) => {
         checkMines(row + 1, column + 1);
     }
 
-    if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - getNumberOfUserMines()) {
+    if (clickedBarsCounter === getUserBoardSizeRows() * getUserBoardSizeColumns() - getNumberOfUserMines()) {
         setIsGameOver(true);
         addScore('win');
         showMinesLocation();
@@ -138,8 +137,8 @@ export const checkMines = (row, column) => {
 }
 
 const checkBar = (row, column) => {
-    if (row < 0 || row >= GAME_DIFFICULTIES.easy.rows ||
-        column < 0 || column >= GAME_DIFFICULTIES.easy.columns) {
+    if (row < 0 || row >= getUserBoardSizeRows() ||
+        column < 0 || column >= getUserBoardSizeColumns()) {
         return 0;
     }
     if (gameBoardMinesLocation.includes(`${row.toString()}-${column.toString()}`)) {

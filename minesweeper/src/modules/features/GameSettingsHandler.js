@@ -1,4 +1,24 @@
+import GAME_DIFFICULTIES from '../../data/difficulties.json';
+
 let numberOfUserMines = 10;
+let userBoardSizeRows = GAME_DIFFICULTIES.easy.rows;
+let userBoardSizeColumns = GAME_DIFFICULTIES.easy.columns;
+
+export const getUserBoardSizeRows = () => {
+    return userBoardSizeRows;
+}
+
+export const getUserBoardSizeColumns = () => {
+    return userBoardSizeColumns;
+}
+
+export const setUserBoardSizeRows = (value) => {
+    userBoardSizeRows = value;
+}
+
+export const setUserBoardSizeColumns = (value) => {
+    userBoardSizeColumns = value;
+}
 
 export const getNumberOfUserMines = () => {
     return numberOfUserMines;
