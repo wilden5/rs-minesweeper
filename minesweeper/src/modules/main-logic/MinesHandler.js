@@ -126,7 +126,7 @@ export const checkMines = (row, column) => {
         checkMines(row + 1, column + 1);
     }
 
-    if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - 10) {
+    if (clickedBarsCounter === GAME_DIFFICULTIES.easy.rows * GAME_DIFFICULTIES.easy.columns - getNumberOfUserMines()) {
         setIsGameOver(true);
         addScore('win');
         showMinesLocation();
