@@ -7,6 +7,13 @@ import {
 } from "../main-logic/MinesHandler";
 import {getCurrentTheme, setCurrentTheme} from "./ThemeHandler";
 import {getUserScores, setUserScores} from "./ScoreTableHandler";
+import {
+    getNumberOfUserMines,
+    getUserBoardSizeColumns,
+    getUserBoardSizeRows, setNumberOfUserMines,
+    setUserBoardSizeColumns,
+    setUserBoardSizeRows
+} from "./GameSettingsHandler";
 
 export const saveGameState = () => {
     const gameState = {
@@ -19,7 +26,10 @@ export const saveGameState = () => {
         themeColor: getCurrentTheme(),
         minesLocation: [],
         barClasses: [],
-        barInnerText: []
+        barInnerText: [],
+        boardSizeRows: getUserBoardSizeRows(),
+        boardSizeColumns: getUserBoardSizeColumns(),
+        userNumberOfMines: getNumberOfUserMines()
     };
     const bars = document.querySelectorAll('.bar');
     bars.forEach((bar) => {
@@ -42,6 +52,9 @@ export const loadGameState = () => {
         setClickedBarsCounter(gameState.barClickedCounter);
         setCurrentTheme(gameState.themeColor);
         setGameBoardMinesLocation(gameState.minesLocation);
+        setUserBoardSizeRows(gameState.boardSizeRows);
+        setUserBoardSizeColumns(gameState.boardSizeColumns);
+        setNumberOfUserMines(gameState.userNumberOfMines);
 
         const bars = document.querySelectorAll('.bar');
         bars.forEach((bar, index) => {

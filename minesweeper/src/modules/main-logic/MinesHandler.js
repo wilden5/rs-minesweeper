@@ -45,7 +45,6 @@ export const generateRandomMines = () => {
         }
     } else {
         while (minesNumber > 0) {
-            console.log('зашло в елс')
             let r = Math.floor(Math.random() * getUserBoardSizeRows());
             let c = Math.floor(Math.random() * getUserBoardSizeColumns());
             let bombId = `${r.toString()}-${c.toString()}`;

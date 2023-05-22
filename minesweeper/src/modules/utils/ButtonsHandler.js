@@ -77,6 +77,14 @@ export const continueYourGameButton = () => {
     const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
 
     CONTINUE_YOUR_SESSION_BUTTON.addEventListener('click', () => {
+        GAME_BOARD_ELEMENT.innerHTML = '';
+        const gameState = JSON.parse(localStorage.getItem('minesweeperGameState'));
+        if (gameState.boardSizeRows === 15) {
+            GAME_BOARD_ELEMENT.classList.add('medium-board-size');
+        } else if (gameState.boardSizeRows === 25) {
+            GAME_BOARD_ELEMENT.classList.add('hard-board-size');
+        }
+        createGameBoard(gameState.boardSizeRows, gameState.boardSizeColumns);
         GAME_INFORMATION_WRAPPER.classList.remove('pause');
         GAME_BOARD_ELEMENT.classList.remove('pause');
         DARK_THEME.classList.remove('pause');
