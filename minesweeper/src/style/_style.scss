@@ -290,3 +290,13 @@ body {
     cursor: not-allowed;
   }
 }
+
+.medium-board-size {
+  width: $medium-size;
+  height: $medium-size;
+}
+
+.hard-board-size {
+  width: $hard-size;
+  height: $hard-size;
+}

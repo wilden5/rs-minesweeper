@@ -1,3 +1,4 @@
+import GAME_DIFFICULTIES from '../../data/difficulties.json';
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
 import {playGameStartSound} from "../features/SoundHandler";
 import {initStopwatch} from "../features/StopwatchHandler";
@@ -10,8 +11,15 @@ import {
 } from "../main-logic/MinesHandler";
 import {initApp} from "../../index";
 import {changeTheme, getCurrentTheme, initThemeChanger, setCurrentTheme} from "../features/ThemeHandler";
-import {addScoreToLayout} from "../main-logic/LayoutHandler";
-import {setNumberOfUserMines, validateMinesInput} from "../features/GameSettingsHandler";
+import {addScoreToLayout, createGameBoard} from "../main-logic/LayoutHandler";
+import {
+    getUserBoardSizeColumns,
+    getUserBoardSizeRows,
+    setNumberOfUserMines,
+    setUserBoardSizeColumns,
+    setUserBoardSizeRows,
+    validateMinesInput
+} from "../features/GameSettingsHandler";
 
 export const checkButtonsState = () => {
     const START_GAME_BUTTON = document.querySelector('.start-game-button');
@@ -101,6 +109,8 @@ export const restartCurrentGameButton = () => {
         clearLocalStorage();
         setIsGameOver(false);
         clearGameBoardMinesLocation();
+        setUserBoardSizeRows(GAME_DIFFICULTIES.easy.rows);
+        setUserBoardSizeColumns(GAME_DIFFICULTIES.easy.columns);
         document.body.innerHTML = '';
         setClickedBarsCounter(0);
         setNumberOfUserMines(10);
@@ -131,6 +141,45 @@ export const saveUserBombsButton = () => {
     MINES_SETTINGS_BUTTON.addEventListener('click', (validateMinesInput));
 }
 
+const easyFieldButton = () => {
+    const GAME_BOARD = document.querySelector('.game-board');
+    const EASY_FIELD_BUTTON = document.querySelector('.easy-field-button');
+    EASY_FIELD_BUTTON.addEventListener('click', () => {
+        setUserBoardSizeRows(GAME_DIFFICULTIES.easy.rows);
+        setUserBoardSizeColumns(GAME_DIFFICULTIES.easy.columns);
+        GAME_BOARD.innerHTML = '';
+        GAME_BOARD.classList.remove('medium-board-size');
+        GAME_BOARD.classList.remove('hard-board-size');
+        createGameBoard(getUserBoardSizeRows(), getUserBoardSizeColumns());
+    })
+}
+
+const mediumFieldButton = () => {
+    const GAME_BOARD = document.querySelector('.game-board');
+    const MEDIUM_FIELD_BUTTON = document.querySelector('.medium-field-button');
+    MEDIUM_FIELD_BUTTON.addEventListener('click', () => {
+        setUserBoardSizeRows(GAME_DIFFICULTIES.medium.rows);
+        setUserBoardSizeColumns(GAME_DIFFICULTIES.medium.columns);
+        GAME_BOARD.innerHTML = '';
+        GAME_BOARD.classList.remove('hard-board-size');
+        GAME_BOARD.classList.add('medium-board-size');
+        createGameBoard(getUserBoardSizeRows(), getUserBoardSizeColumns());
+    })
+}
+
+const hardFieldButton = () => {
+    const GAME_BOARD = document.querySelector('.game-board');
+    const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
+    HARD_FIELD_BUTTON.addEventListener('click', () => {
+        setUserBoardSizeRows(GAME_DIFFICULTIES.hard.rows);
+        setUserBoardSizeColumns(GAME_DIFFICULTIES.hard.columns);
+        GAME_BOARD.innerHTML = '';
+        GAME_BOARD.classList.remove('medium-board-size');
+        GAME_BOARD.classList.add('hard-board-size');
+        createGameBoard(getUserBoardSizeRows(), getUserBoardSizeColumns());
+    })
+}
+
 export const initButtons = () => {
     checkButtonsState();
     continueYourGameButton();
@@ -138,4 +187,7 @@ export const initButtons = () => {
     darkThemeButton();
     lightThemeButton();
     saveUserBombsButton();
+    easyFieldButton();
+    mediumFieldButton();
+    hardFieldButton();
 }
