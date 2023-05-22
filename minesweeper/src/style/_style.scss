@@ -255,6 +255,15 @@ body {
   }
 }
 
+.mines-settings-button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
+  }
+}
+
 .invalid-input {
   border: 1px solid $color-red;
 }
@@ -295,6 +304,15 @@ body {
 
   &[disabled] {
     cursor: not-allowed;
+  }
+}
+
+.field-button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
   }
 }
 
