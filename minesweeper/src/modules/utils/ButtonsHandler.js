@@ -117,6 +117,8 @@ export const restartCurrentGameButton = () => {
         clearLocalStorage();
         setIsGameOver(false);
         clearGameBoardMinesLocation();
+        setCurrentTheme('light');
+        initThemeChanger();
         setUserBoardSizeRows(GAME_DIFFICULTIES.easy.rows);
         setUserBoardSizeColumns(GAME_DIFFICULTIES.easy.columns);
         document.body.innerHTML = '';
