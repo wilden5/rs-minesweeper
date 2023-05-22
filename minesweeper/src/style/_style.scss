@@ -12,6 +12,13 @@ body {
   background-color: black;
 }
 
+.game-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: $hard-size;
+}
+
 .game-board {
   display: flex;
   justify-content: center;
@@ -107,9 +114,9 @@ body {
 }
 
 .guessed-bomb {
-  font-size: 1.7rem;
-  align-items: center;
-  background: $color-orange;
+  font-size: 3.2rem;
+  background: $color-green;
+  align-items: flex-start;
 }
 
 .buttons-wrapper {
@@ -294,9 +301,16 @@ body {
 .medium-board-size {
   width: $medium-size;
   height: $medium-size;
+
 }
 
 .hard-board-size {
   width: $hard-size;
   height: $hard-size;
+
+  div {
+    font-size: 2.2rem;
+    width: 3rem;
+    height: 3rem;
+  }
 }

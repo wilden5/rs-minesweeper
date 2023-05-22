@@ -73,7 +73,7 @@ export const showMinesLocation = () => {
         if (gameBoardMinesLocation.includes(bar.classList[0])) {
             if (bar.classList.contains('red-flag')) {
                 bar.classList.add('guessed-bomb');
-                bar.innerText = '💣🚩';
+                bar.innerText = '💣';
             } else {
                 bar.innerText = '💣';
                 bar.classList.add('bomb');
