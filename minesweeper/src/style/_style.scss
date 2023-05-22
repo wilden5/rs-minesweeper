@@ -319,7 +319,6 @@ body {
 .medium-board-size {
   width: $medium-size;
   height: $medium-size;
-
 }
 
 .hard-board-size {
@@ -330,5 +329,26 @@ body {
     font-size: 2.2rem;
     width: 3rem;
     height: 3rem;
+  }
+}
+
+.game-sound-button {
+  background-color: $color-green;
+  cursor: pointer;
+  border: none;
+  border-radius: 2rem;
+
+  &:hover:not([disabled]) {
+    background-color: $color-red;
+    transition: $transition-ease-out;
+  }
+}
+
+.gs-disabled {
+  background-color: $color-red;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
   }
 }

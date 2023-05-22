@@ -1,6 +1,6 @@
 import GAME_DIFFICULTIES from '../../data/difficulties.json';
 import {getIsGameOver, setIsGameOver} from "../main-logic/SessionHandler";
-import {playGameStartSound} from "../features/SoundHandler";
+import {playGameStartSound, setSoundState, updateSoundButtonColor} from "../features/SoundHandler";
 import {initStopwatch} from "../features/StopwatchHandler";
 import {initClickOnBar} from "../main-logic/ClickHandler";
 import {initRedFlag} from "../main-logic/FlagHandler";
@@ -34,6 +34,7 @@ export const checkButtonsState = () => {
     const EASY_FIELD_BUTTON = document.querySelector('.easy-field-button');
     const MEDIUM_FIELD_BUTTON = document.querySelector('.medium-field-button');
     const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
+    const GAME_SOUND = document.querySelector('.game-sound-button');
 
     if (localStorage.getItem('minesweeperGameState') === null) {
         CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
@@ -57,6 +58,7 @@ export const checkButtonsState = () => {
         MEDIUM_FIELD_BUTTON.classList.add('pause');
         HARD_FIELD_BUTTON.classList.add('pause');
         START_GAME_BUTTON.disabled = true;
+        GAME_SOUND.classList.add('pause');
 
         if (JSON.parse(localStorage.getItem('minesweeperGameState')).isGameOver === true) {
             CONTINUE_YOUR_SESSION_BUTTON.disabled = true;
@@ -75,6 +77,7 @@ export const continueYourGameButton = () => {
     const EASY_FIELD_BUTTON = document.querySelector('.easy-field-button');
     const MEDIUM_FIELD_BUTTON = document.querySelector('.medium-field-button');
     const HARD_FIELD_BUTTON = document.querySelector('.hard-field-button');
+    const GAME_SOUND = document.querySelector('.game-sound-button');
 
     CONTINUE_YOUR_SESSION_BUTTON.addEventListener('click', () => {
         GAME_BOARD_ELEMENT.innerHTML = '';
@@ -94,6 +97,7 @@ export const continueYourGameButton = () => {
         EASY_FIELD_BUTTON.classList.remove('pause');
         MEDIUM_FIELD_BUTTON.classList.remove('pause');
         HARD_FIELD_BUTTON.classList.remove('pause');
+        GAME_SOUND.classList.remove('pause');
         loadGameResults();
         addScoreToLayout();
         loadGameState();
@@ -103,6 +107,7 @@ export const continueYourGameButton = () => {
         EASY_FIELD_BUTTON.disabled = true;
         MEDIUM_FIELD_BUTTON.disabled = true;
         HARD_FIELD_BUTTON.disabled = true;
+        updateSoundButtonColor();
         playGameStartSound();
         initStopwatch();
         initClickOnBar();
@@ -119,6 +124,8 @@ export const restartCurrentGameButton = () => {
         clearGameBoardMinesLocation();
         setCurrentTheme('light');
         initThemeChanger();
+        setSoundState(true);
+        updateSoundButtonColor();
         setUserBoardSizeRows(GAME_DIFFICULTIES.easy.rows);
         setUserBoardSizeColumns(GAME_DIFFICULTIES.easy.columns);
         document.body.innerHTML = '';
@@ -190,6 +197,20 @@ const hardFieldButton = () => {
     })
 }
 
+const gameSoundButton = () => {
+    const GAME_SOUND = document.querySelector('.game-sound-button');
+
+    GAME_SOUND.addEventListener('click', () => {
+        if (!GAME_SOUND.classList.contains('gs-disabled')) {
+            GAME_SOUND.classList.add('gs-disabled');
+            setSoundState(false);
+        } else {
+            GAME_SOUND.classList.remove('gs-disabled');
+            setSoundState(true);
+        }
+    })
+}
+
 export const initButtons = () => {
     checkButtonsState();
     continueYourGameButton();
@@ -200,4 +221,5 @@ export const initButtons = () => {
     easyFieldButton();
     mediumFieldButton();
     hardFieldButton();
+    gameSoundButton();
 }

@@ -48,6 +48,7 @@ export const createBasicLayout = () => {
     const EASY_FIELD_BUTTON = createElement('button', ['easy-field-button', 'field-button'], '10x10');
     const MEDIUM_FIELD_BUTTON = createElement('button', ['medium-field-button', 'field-button'], '15x15');
     const HARD_FIELD_BUTTON = createElement('button', ['hard-field-button', 'field-button'], '25x25');
+    const GAME_SOUND = createElement('button', ['game-sound-button'], '🔊');
 
     const createMinesSettingsInput = () => {
         const MINES_SETTINGS_INPUT = createElement('input', ['mines-settings-input']);
@@ -62,6 +63,7 @@ export const createBasicLayout = () => {
     FIELD_BUTTONS_WRAPPER.appendChild(EASY_FIELD_BUTTON);
     FIELD_BUTTONS_WRAPPER.appendChild(MEDIUM_FIELD_BUTTON);
     FIELD_BUTTONS_WRAPPER.appendChild(HARD_FIELD_BUTTON);
+    FIELD_BUTTONS_WRAPPER.appendChild(GAME_SOUND);
 
     THEME_WRAPPER.appendChild(DARK_THEME_BUTTON);
     THEME_WRAPPER.appendChild(LIGHT_THEME_BUTTON);

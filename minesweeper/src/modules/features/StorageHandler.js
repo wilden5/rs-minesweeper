@@ -14,6 +14,7 @@ import {
     setUserBoardSizeColumns,
     setUserBoardSizeRows
 } from "./GameSettingsHandler";
+import {getSoundState, setSoundState} from "./SoundHandler";
 
 export const saveGameState = () => {
     const gameState = {
@@ -29,7 +30,8 @@ export const saveGameState = () => {
         barInnerText: [],
         boardSizeRows: getUserBoardSizeRows(),
         boardSizeColumns: getUserBoardSizeColumns(),
-        userNumberOfMines: getNumberOfUserMines()
+        userNumberOfMines: getNumberOfUserMines(),
+        userSound: getSoundState()
     };
     const bars = document.querySelectorAll('.bar');
     bars.forEach((bar) => {
@@ -55,7 +57,7 @@ export const loadGameState = () => {
         setUserBoardSizeRows(gameState.boardSizeRows);
         setUserBoardSizeColumns(gameState.boardSizeColumns);
         setNumberOfUserMines(gameState.userNumberOfMines);
-
+        setSoundState(gameState.userSound);
         const bars = document.querySelectorAll('.bar');
         bars.forEach((bar, index) => {
             gameState.barClasses[index].forEach((className) => {
