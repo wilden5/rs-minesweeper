@@ -1,0 +1,354 @@
+@import "var";
+
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: ghostwhite;
+}
+
+.body-dark {
+  background-color: black;
+}
+
+.game-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: $hard-size;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: $default-size;
+  height: $default-size;
+  background-color: $color-lightgray;
+
+  div {
+    width: 4.8rem;
+    height: 4.8rem;
+    border: 1px solid $color-white;
+  }
+}
+
+.game-board-dark {
+  background-color: $color-white;
+
+  div {
+    border: 1px solid $color-lightgray;
+  }
+}
+
+.bar-clicked {
+  background-color: $color-darkgray;
+}
+
+.nearby-bombs {
+  &1 {color: $color-blue;}
+  &2 {color: $color-green;}
+  &3 {color: $color-red;}
+  &4 {color: $color-darkblue;}
+  &5 {color: $color-brown;}
+}
+
+.nb {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.red-flag,
+.bomb {
+  display: flex;
+  justify-content: center;
+  font-size: 3.2rem;
+}
+
+.bomb {
+  background-color: $color-red;
+}
+
+.game-information {
+  width: $default-size;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1rem;
+  row-gap: 1rem;
+  font-family: $font-family;
+  line-height: 1.5;
+}
+
+.button {
+  width: 22rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 1.5rem;
+  border-style: none;
+  padding: 0.8rem;
+  cursor: pointer;
+  background-color: $color-cadetblue;
+  font-family: $font-family;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  &:hover:not([disabled]) {
+    background-color: $color-orange;
+    transition: $transition-ease-out;
+  }
+}
+
+.button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
+  }
+}
+
+.guessed-bomb {
+  font-size: 3.2rem;
+  background: $color-green;
+  align-items: flex-start;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 1rem;
+  border-radius: 1.5rem;
+}
+
+.game-information-wrapper {
+  padding: 0.5rem;
+  display: flex;
+  border: 0.5rem solid $color-cadetblue;
+  justify-content: space-around;
+  gap: 0.5rem;
+  cursor: default;
+}
+
+.game-information-wrapper-dark {
+  color: white;
+  border: 0.5rem solid $color-white;
+}
+
+.pause {
+  display: none;
+}
+
+.theme-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+  gap: 1rem;
+}
+
+.theme-button {
+  padding: 0.5rem;
+  width: 15rem;
+  font-size: 1.7rem;
+  font-family: $font-family;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+.dark-theme {
+  background-color: black;
+  color: white;
+
+  &:hover {
+    background-color: gray;
+    transition: $transition-ease-out;
+  }
+}
+
+.dark-theme-d {
+  background-color: $color-darkgray;
+  color: white;
+
+  &:hover {
+    background-color: gray;
+    transition: $transition-ease-out;
+  }
+}
+
+.light-theme {
+  background-color: $color-wheat;
+
+  &:hover {
+    background-color: $color-burlywood;
+    transition: $transition-ease-out;
+  }
+}
+
+.light-theme-d {
+  background-color: $color-white;
+
+  &:hover {
+    background-color: $color-wheat;
+    transition: $transition-ease-out;
+  }
+}
+
+.score-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-table-header {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.score-table-description {
+  font-size: 1.2rem;
+}
+
+.score-table-dark {
+  color: white;
+}
+
+.win-scores-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.win-score {
+  font-size: 2rem;
+  font-family: $font-family;
+}
+
+.mines-settings-wrapper,
+.field-buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.mines-settings-button {
+  background-color: $color-cadetblue;
+  width: 8rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  border-radius: 2rem;
+  padding: 0.3rem;
+
+  &:hover:not([disabled]) {
+    background-color: $color-orange;
+    transition: $transition-ease-out;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.mines-settings-button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
+  }
+}
+
+.invalid-input {
+  border: 1px solid $color-red;
+}
+
+.mines-settings-input {
+
+  &::placeholder {
+    font-size: 1.1rem;
+    font-family: $font-family;
+  }
+
+  &::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.field-buttons-wrapper {
+  margin-bottom: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.field-button {
+  background-color: $color-orange;
+  width: 7rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  border-radius: 2rem;
+  padding: 0.3rem;
+
+  &:hover:not([disabled]) {
+    background-color: $color-red;
+    transition: $transition-ease-out;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+}
+
+.field-button-dark {
+  background-color: $color-white;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
+  }
+}
+
+.medium-board-size {
+  width: $medium-size;
+  height: $medium-size;
+}
+
+.hard-board-size {
+  width: $hard-size;
+  height: $hard-size;
+
+  div {
+    font-size: 2.2rem;
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.game-sound-button {
+  background-color: $color-green;
+  cursor: pointer;
+  border: none;
+  border-radius: 2rem;
+
+  &:hover:not([disabled]) {
+    background-color: $color-red;
+    transition: $transition-ease-out;
+  }
+}
+
+.gs-disabled {
+  background-color: $color-red;
+
+  &:hover:not([disabled]) {
+    background-color: $color-green;
+    transition: $transition-ease-out;
+  }
+}

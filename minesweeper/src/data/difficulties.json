@@ -1,0 +1,14 @@
+{
+  "easy": {
+    "rows": 10,
+    "columns": 10
+  },
+  "medium": {
+    "rows": 15,
+    "columns": 15
+  },
+  "hard": {
+    "rows": 25,
+    "columns": 25
+  }
+}
